@@ -23,28 +23,51 @@ var insert_semesters = [
     ['HK2 2015-2016', '2016-1-15 00:00:00', '2016-4-28 00:00:00', '30/4/2016 - 2/5/2016'],
     ['HK3 2015-2016', '2016-5-5 00:00:00', '2016-8-8 00:00:00', '16/8/2016 - 25/9/2016'],
     ['HK1 2016-2017', '2016-10-2 00:00:00', '2016-12-25 00:00:00', '24/12/2016 - 6/1/2017'],
+    ['HK2 2016-2017', '2017-1-16 00:00:00', '2017-5-2 00:00:00', '30/4/2017 - 2/5/2017'],
+    ['HK3 2016-2017', '2017-5-8 00:00:00', '2017-8-11 00:00:00', '16/8/2016 - 25/9/2016'],
+
 ];
 //[name,code]
 var insert_programs = [
     ['Chất lượng cao', 'CLC'],
     ['Việt Pháp', 'VP'],
     ['Chương trình tiên tiến', 'CTT'],
+    ['Cử nhân tài năng', 'TN'],
+    ['Chính Quy', 'CQ'],
+    ['Cao Đẳng', 'CD'],
 ];
 //[code,email,program_id]
 var insert_classes = [
-    ['16CTT', '16ctt@student.hcmus.edu.vn', 3], //1
-    ['15CTT', '15ctt@student.hcmus.edu.vn', 3], //2
-    ['14CTT', '14ctt@student.hcmus.edu.vn', 3], //3
-    ['13CTT', '13ctt@student.hcmus.edu.vn', 3], //4
-    ['16VP', '16vp@student.hcmus.edu.vn', 2], //5
-    ['15VP', '15vp@student.hcmus.edu.vn', 2], //6
-    ['14VP', '14vp@student.hcmus.edu.vn', 2], //7
-    ['13VP', '13vp@student.hcmus.edu.vn', 2], //8
-    ['16CLC1', '16clc@student.hcmus.edu.vn', 1], //9
-    ['16CLC2', '16clc@student.hcmus.edu.vn', 1], //10
-    ['15CLC', '15clc@student.hcmus.edu.vn', 1], //11
-    ['14CLC', '14clc@student.hcmus.edu.vn', 1], //12
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //13
+      ['16CTT', '16ctt@student.hcmus.edu.vn', 3], //11
+    ['15CTT', '15ctt@student.hcmus.edu.vn', 3], //12
+    ['14CTT', '14ctt@student.hcmus.edu.vn', 3], //13
+    ['13CTT', '13ctt@student.hcmus.edu.vn', 3], //14
+    ['12CTT', '12ctt@student.hcmus.edu.vn', 3], //15
+    ['16VP', '16vp@student.hcmus.edu.vn', 2], //16
+    ['15VP', '15vp@student.hcmus.edu.vn', 2], //17
+    ['14VP', '14vp@student.hcmus.edu.vn', 2], //18
+    ['13VP', '13vp@student.hcmus.edu.vn', 2], //19
+    ['16CLC1', '16clc@student.hcmus.edu.vn', 1], //20
+    ['16CLC2', '16clc@student.hcmus.edu.vn', 1], //21
+    ['15CLC', '15clc@student.hcmus.edu.vn', 1], //22
+    ['14CLC', '14clc@student.hcmus.edu.vn', 1], //23
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //24
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //25
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //26
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //27
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //28
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //29
+    ['16CD', '16cd@student.hcmus.edu.vn', 5], //1
+    ['15CD', '15cd@student.hcmus.edu.vn', 5], //2
+    ['14CD', '14cd@student.hcmus.edu.vn', 5], //3
+    ['13CD', '13cd@student.hcmus.edu.vn', 5], //4
+    ['12CD', '12cd@student.hcmus.edu.vn', 5], //5
+    ['16TN', '16tn@student.hcmus.edu.vn', 4], //6
+    ['15TN', '15tn@student.hcmus.edu.vn', 4], //7
+    ['14TN', '14tn@student.hcmus.edu.vn', 4], //8
+    ['13TN', '13tn@student.hcmus.edu.vn', 4], //9
+    ['12TN', '12tn@student.hcmus.edu.vn', 4], //10
+
 ];
 //[code, name, semester_id, program_id, office_hour, note]
 var insert_courses = [
