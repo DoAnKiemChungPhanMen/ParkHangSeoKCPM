@@ -1457,7 +1457,7 @@ var gendData = function (res) {
                 });
             },
             function (callback) {
-                connection.query(arrUser, function (error, results, fields) {
+                connection.query(arrUser[0], function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
