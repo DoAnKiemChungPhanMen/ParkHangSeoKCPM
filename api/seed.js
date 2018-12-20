@@ -5,6 +5,7 @@ var _global = require('../global.js');
 var mysql = require('mysql');
 var pool = mysql.createPool(_global.db);
 var async = require("async");
+var fs = require('fs');
 
 var pg = require('pg');
 var format = require('pg-format');
@@ -31,43 +32,43 @@ var insert_semesters = [
 var insert_programs = [
     ['Chất lượng cao', 'CLC'],
     ['Việt Pháp', 'VP'],
-    ['Chương trình tiên tiến', 'CTT'],
+    ['Chương trình tiên tiến', 'TT'],
     ['Cử nhân tài năng', 'TN'],
-    ['Chính Quy', 'CQ'],
+    ['Chính Quy', 'CTT'],
     ['Cao Đẳng', 'CD'],
 ];
 //[code,email,program_id]
 var insert_classes = [
-      ['16CTT', '16ctt@student.hcmus.edu.vn', 3], //11
-    ['15CTT', '15ctt@student.hcmus.edu.vn', 3], //12
-    ['14CTT', '14ctt@student.hcmus.edu.vn', 3], //13
-    ['13CTT', '13ctt@student.hcmus.edu.vn', 3], //14
-    ['12CTT', '12ctt@student.hcmus.edu.vn', 3], //15
-    ['16VP', '16vp@student.hcmus.edu.vn', 2], //16
-    ['15VP', '15vp@student.hcmus.edu.vn', 2], //17
-    ['14VP', '14vp@student.hcmus.edu.vn', 2], //18
-    ['13VP', '13vp@student.hcmus.edu.vn', 2], //19
-    ['16CLC1', '16clc@student.hcmus.edu.vn', 1], //20
-    ['16CLC2', '16clc@student.hcmus.edu.vn', 1], //21
-    ['15CLC', '15clc@student.hcmus.edu.vn', 1], //22
-    ['14CLC', '14clc@student.hcmus.edu.vn', 1], //23
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //24
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //25
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //26
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //27
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //28
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //29
-    ['16CD', '16cd@student.hcmus.edu.vn', 5], //1
-    ['15CD', '15cd@student.hcmus.edu.vn', 5], //2
-    ['14CD', '14cd@student.hcmus.edu.vn', 5], //3
-    ['13CD', '13cd@student.hcmus.edu.vn', 5], //4
-    ['12CD', '12cd@student.hcmus.edu.vn', 5], //5
-    ['16TN', '16tn@student.hcmus.edu.vn', 4], //6
-    ['15TN', '15tn@student.hcmus.edu.vn', 4], //7
-    ['14TN', '14tn@student.hcmus.edu.vn', 4], //8
-    ['13TN', '13tn@student.hcmus.edu.vn', 4], //9
-    ['12TN', '12tn@student.hcmus.edu.vn', 4], //10
-
+    ['16CTT', '16ctt@student.hcmus.edu.vn', 3], //1
+    ['15CTT', '15ctt@student.hcmus.edu.vn', 3], //2
+    ['14CTT', '14ctt@student.hcmus.edu.vn', 3], //3
+    ['13CTT', '13ctt@student.hcmus.edu.vn', 3], //4
+    ['12CTT', '12ctt@student.hcmus.edu.vn', 3], //5
+    ['16VP', '16vp@student.hcmus.edu.vn', 2], //6
+    ['15VP', '15vp@student.hcmus.edu.vn', 2], //7
+    ['14VP', '14vp@student.hcmus.edu.vn', 2], //8
+    ['13VP', '13vp@student.hcmus.edu.vn', 2], //9
+    ['12VP', '12vp@student.hcmus.edu.vn', 2], //9
+    ['16CLC', '16clc@student.hcmus.edu.vn', 1], //10
+    ['15CLC', '15clc@student.hcmus.edu.vn', 1], //11
+    ['14CLC', '14clc@student.hcmus.edu.vn', 1], //12
+    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //13
+    ['12CLC', '12clc@student.hcmus.edu.vn', 1], //13
+    ['16CD', '16cd@student.hcmus.edu.vn', 5], //14
+    ['15CD', '15cd@student.hcmus.edu.vn', 5], //15
+    ['14CD', '14cd@student.hcmus.edu.vn', 5], //16
+    ['13CD', '13cd@student.hcmus.edu.vn', 5], //17
+    ['12CD', '12cd@student.hcmus.edu.vn', 5], //18
+    ['16TN', '16tn@student.hcmus.edu.vn', 5], //19
+    ['15TN', '15tn@student.hcmus.edu.vn', 5], //20
+    ['14TN', '14tn@student.hcmus.edu.vn', 5], //21
+    ['13TN', '13tn@student.hcmus.edu.vn', 5], //22
+    ['12TN', '12tn@student.hcmus.edu.vn', 5], //23
+    ['16TN', '16tt@student.hcmus.edu.vn', 5], //19
+    ['15TT', '15tt@student.hcmus.edu.vn', 5], //20
+    ['14TT', '14tt@student.hcmus.edu.vn', 5], //21
+    ['13TT', '13tt@student.hcmus.edu.vn', 5], //22
+    ['12TT', '12tt@student.hcmus.edu.vn', 5], //23
 ];
 //[code, name, semester_id, program_id, office_hour, note]
 var insert_courses = [
@@ -110,53 +111,53 @@ var insert_courses = [
 ];
 //[class_id,course_id,schedules]
 var insert_class_has_course = [
-    ['1', '1', '4-I44-LT;8-I41-LT;14-I11C-TH;15-I11C-TH;22-I44-LT'], //1
-    ['1', '2', '2-I42-TH;3-I42-TH;5-I44-LT;12-I44-LT'], //2
-    ['1', '3', '13-I42-LT;15-I42-TH;18-I42-LT;19-I42-TH'], //3
-    ['1', '4', '16-I44-LT;17-I44-LT'], //4
-    ['1', '5', '20-OUT-TH;21-OUT-TH'], //5
+    // ['1', '1', '4-I44-LT;8-I41-LT;14-I11C-TH;15-I11C-TH;22-I44-LT'], //1
+    // ['1', '2', '2-I42-TH;3-I42-TH;5-I44-LT;12-I44-LT'], //2
+    // ['1', '3', '13-I42-LT;15-I42-TH;18-I42-LT;19-I42-TH'], //3
+    // ['1', '4', '16-I44-LT;17-I44-LT'], //4
+    // ['1', '5', '20-OUT-TH;21-OUT-TH'], //5
 
-    ['2', '6', '12-I42-LT;20-I42-LT'], //6
-    ['2', '7', '8-I42-LT;9-I42-LT;18-B11A-TH'], //7
-    ['2', '8', '1-I42-LT;10-I23-TH;11-I23-TH;17-I23-LT'], //8
-    ['2', '9', '14-I23-LT;15-I23-LT'], //9
-    ['2', '10', '6-B11A-LT;7-B11A-LT;13-I11C-TH'], //10
+    // ['2', '6', '12-I42-LT;20-I42-LT'], //6
+    // ['2', '7', '8-I42-LT;9-I42-LT;18-B11A-TH'], //7
+    // ['2', '8', '1-I42-LT;10-I23-TH;11-I23-TH;17-I23-LT'], //8
+    // ['2', '9', '14-I23-LT;15-I23-LT'], //9
+    // ['2', '10', '6-B11A-LT;7-B11A-LT;13-I11C-TH'], //10
 
-    ['3', '11', '1-I23-LT;5-I23-LT;12-I11C-TH;12-I44-LT'], //11
-    ['3', '12', '0-I23-LT;6-I11C-TH;7-I11C-TH;16-I23-LT'], //12
-    ['3', '13', '4-I23-LT;13-I23-LT;22-I23-TH'], //13
-    ['3', '14', '2-I11C-TH;11-I44-LT;19-I44-LT'], //14
-    ['3', '15', '3-I44-LT;20-I44-LT;23-I23-TH'], //15
-    ['3', '16', '8-I23-LT;9-I23-LT'], //16
+    // ['3', '11', '1-I23-LT;5-I23-LT;12-I11C-TH;12-I44-LT'], //11
+    // ['3', '12', '0-I23-LT;6-I11C-TH;7-I11C-TH;16-I23-LT'], //12
+    // ['3', '13', '4-I23-LT;13-I23-LT;22-I23-TH'], //13
+    // ['3', '14', '2-I11C-TH;11-I44-LT;19-I44-LT'], //14
+    // ['3', '15', '3-I44-LT;20-I44-LT;23-I23-TH'], //15
+    // ['3', '16', '8-I23-LT;9-I23-LT'], //16
 
-    ['4', '17', '6-I44-LT;7-I41-LT'], //17
-    ['4', '18', '2-I44-LT;10-I44-LT'], //18
-    ['4', '19', '12-I41-LT;13-I41-LT'], //19
+    // ['4', '17', '6-I44-LT;7-I41-LT'], //17
+    // ['4', '18', '2-I44-LT;10-I44-LT'], //18
+    // ['4', '19', '12-I41-LT;13-I41-LT'], //19
 
-    ['9', '20', '0-B11A-LT;7-I61-TH;20-B11A-LT'], //20
-    ['9', '21', '5-B11A-LT;21-I41-LT'], //21
-    ['9', '22', '14-B11A-LT;15-B11A-LT;23-I41-TH'], //22
-    ['9', '23', '10-B11A-LT;19-I41-TH;22-IB11A-LT'], //23
+    // ['9', '20', '0-B11A-LT;7-I61-TH;20-B11A-LT'], //20
+    // ['9', '21', '5-B11A-LT;21-I41-LT'], //21
+    // ['9', '22', '14-B11A-LT;15-B11A-LT;23-I41-TH'], //22
+    // ['9', '23', '10-B11A-LT;19-I41-TH;22-IB11A-LT'], //23
 
-    ['10', '20', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //24
-    ['10', '21', '4-B11A-LT;20-B11A-LT'], //25
-    ['10', '22', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //26
-    ['10', '23', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //27
+    // ['10', '20', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //24
+    // ['10', '21', '4-B11A-LT;20-B11A-LT'], //25
+    // ['10', '22', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //26
+    // ['10', '23', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //27
 
-    ['11', '24', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //28
-    ['11', '25', '4-B11A-LT;20-B11A-LT'], //29
-    ['11', '26', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //30
-    ['11', '27', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //31
-    ['11', '28', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //32
+    // ['11', '24', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //28
+    // ['11', '25', '4-B11A-LT;20-B11A-LT'], //29
+    // ['11', '26', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //30
+    // ['11', '27', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //31
+    // ['11', '28', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //32
 
-    ['12', '29', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //33
-    ['12', '30', '16-I41-LT;17-I41-LT'], //34
-    ['12', '31', '10-B11B-LT;11-B11B-LT'], //35
-    ['12', '32', '6-B11B-LT;7-B11B-TH'], //36
-    ['12', '33', '1-I44-LT;18-I44-LT'], //37
+    // ['12', '29', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //33
+    // ['12', '30', '16-I41-LT;17-I41-LT'], //34
+    // ['12', '31', '10-B11B-LT;11-B11B-LT'], //35
+    // ['12', '32', '6-B11B-LT;7-B11B-TH'], //36
+    // ['12', '33', '1-I44-LT;18-I44-LT'], //37
 
-    ['13', '34', '6-I42-LT;7-I42-LT'], //38
-    ['13', '35', '16-B11A-LT;17-B11A-LT'], //39
+    // ['13', '34', '6-I42-LT;7-I42-LT'], //38
+    // ['13', '35', '16-B11A-LT;17-B11A-LT'], //39
 ];
 //[first_name,last_name,email,phone,password,role_id]
 var insert_users = [
@@ -1153,15 +1154,15 @@ var insert_attendance_detail = [
 ];
 //[from_id, to_id, title, content, category, type, read, replied]
 var insert_feeback = [
-    [null, null, 'Phòng học kém chất lượng', 'Máy lạnh nóng quớ',                         2, 3, false, false],//1
-    [171,     1, 'Thầy dạy quá nhanh',       'Thầy có thể dạy chậm lại cho em dễ hiểu ?', 1,1, false, false],//2
-    [171,  null, 'Ổ điện hỏng',              'Ổ điện dãy giữa phòng I44 bị hỏng',         2,1, true, true],//3
-    [171,  null, 'Lớp 13CLC hư',             'Lớp 13CLC nói chuyện quá nhiều trong giờ',  1,1, true, true],//4
-    [null, null, 'Phòng học chất lượng thấp','Khong co may lanh',                         2,3, false, false],//5
-    [171,     1, 'Thầy dạy quá khó hiểu',    'Thầy có thể dạy chậm lại cho em dễ hiểu ?',  1,1, false, false],//6
-    [171,     2, 'Cô hay đến lớp trễ',       'Tóc mới của cô làm em khó tập trung quá!',  1,1, false, false],//7
-    [1,    null, 'Ổ điện không mở được',     'Cô hãy fix giúp tụi em',                    2,1, true, true],//8
-    [1,    null, 'Lớp 13CLC cúp học cả lớp', 'Lớp 13CLC nói chuyện quá ',                 1,1, true, true]//9
+    [null, null, 'Phòng học kém chất lượng', 'Máy lạnh nóng quớ', 2, 3, false, false],//1
+    [171, 1, 'Thầy dạy quá nhanh', 'Thầy có thể dạy chậm lại cho em dễ hiểu ?', 1, 1, false, false],//2
+    [171, null, 'Ổ điện hỏng', 'Ổ điện dãy giữa phòng I44 bị hỏng', 2, 1, true, true],//3
+    [171, null, 'Lớp 13CLC hư', 'Lớp 13CLC nói chuyện quá nhiều trong giờ', 1, 1, true, true],//4
+    [null, null, 'Phòng học chất lượng thấp', 'Khong co may lanh', 2, 3, false, false],//5
+    [171, 1, 'Thầy dạy quá khó hiểu', 'Thầy có thể dạy chậm lại cho em dễ hiểu ?', 1, 1, false, false],//6
+    [171, 2, 'Cô hay đến lớp trễ', 'Tóc mới của cô làm em khó tập trung quá!', 1, 1, false, false],//7
+    [1, null, 'Ổ điện không mở được', 'Cô hãy fix giúp tụi em', 2, 1, true, true],//8
+    [1, null, 'Lớp 13CLC cúp học cả lớp', 'Lớp 13CLC nói chuyện quá ', 1, 1, true, true]//9
 ];
 //[title, class_has_course_id, created_by,is_template]
 var insert_quiz = [
@@ -1169,9 +1170,9 @@ var insert_quiz = [
 ];
 //[quiz_id, text, option_a, option_b, option_c, option_d, correct_option, timer]
 var insert_quiz_question = [
-    [1, `Kiểu nào có kích thước lớn nhất`,'int','char','long','double','double',10], //1
-    [1, `Dạng hậu tố của biểu thức 9 - (5 + 2) là ?`,'95-+2','95-2+','952+-','95+2-','952+-',10], //2
-    [1, `Giả sử a và b là hai số thực. Biểu thức nào dưới đây là không được phép theo cú pháp của ngôn ngữ lập trình C?`,'ab','a-=b','a>>=b','a*=b','a>>=b',10],//3
+    [1, `Kiểu nào có kích thước lớn nhất`, 'int', 'char', 'long', 'double', 'double', 10], //1
+    [1, `Dạng hậu tố của biểu thức 9 - (5 + 2) là ?`, '95-+2', '95-2+', '952+-', '95+2-', '952+-', 10], //2
+    [1, `Giả sử a và b là hai số thực. Biểu thức nào dưới đây là không được phép theo cú pháp của ngôn ngữ lập trình C?`, 'ab', 'a-=b', 'a>>=b', 'a*=b', 'a>>=b', 10],//3
 ];
 //[quiz_question_id, selected_option, answered_by]
 var insert_quiz_answer = [
@@ -1184,21 +1185,21 @@ var insert_quiz_answer = [
 ];
 //[to_id, message, object_id, type]
 var insert_notifications = [
-    [null,1, `Đinh Bá Tiến sent you a feedback`,5,_global.notification_type.sent_feedback], //1
+    [null, 1, `Đinh Bá Tiến sent you a feedback`, 5, _global.notification_type.sent_feedback], //1
 ];
 
-var seeding_postgres = function(res) {
-    pool_postgres.connect(function(error, connection, done) {
+var seeding_postgres = function (res) {
+    pool_postgres.connect(function (error, connection, done) {
         async.series([
             //Start transaction
-            function(callback) {
+            function (callback) {
                 connection.query('BEGIN', (error) => {
-                    if(error) callback(error);
+                    if (error) callback(error);
                     else callback();
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO roles (name) VALUES %L', insert_roles), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO roles (name) VALUES %L', insert_roles), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1206,8 +1207,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO semesters (name,start_date,end_date,vacation_time) VALUES %L', insert_semesters), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO semesters (name,start_date,end_date,vacation_time) VALUES %L', insert_semesters), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1215,8 +1216,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO programs (name,code) VALUES %L', insert_programs), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO programs (name,code) VALUES %L', insert_programs), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1224,8 +1225,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO classes (name,email,program_id) VALUES %L', insert_classes), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO classes (name,email,program_id) VALUES %L', insert_classes), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1233,8 +1234,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO courses (code,name,semester_id,program_id,office_hour,note) VALUES %L', insert_courses), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO courses (code,name,semester_id,program_id,office_hour,note) VALUES %L', insert_courses), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1242,8 +1243,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO class_has_course (class_id,course_id,schedules) VALUES %L', insert_class_has_course), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO class_has_course (class_id,course_id,schedules) VALUES %L', insert_class_has_course), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1251,8 +1252,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1260,8 +1261,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO teacher_teach_course (teacher_id,course_id,teacher_role) VALUES %L', insert_teacher_teach_course), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO teacher_teach_course (teacher_id,course_id,teacher_role) VALUES %L', insert_teacher_teach_course), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1269,8 +1270,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO students (id,stud_id,class_id) VALUES %L', insert_students), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO students (id,stud_id,class_id) VALUES %L', insert_students), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1278,8 +1279,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO student_enroll_course (class_has_course_id,student_id) VALUES %L', insert_student_enroll_course), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO student_enroll_course (class_has_course_id,student_id) VALUES %L', insert_student_enroll_course), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1287,8 +1288,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO absence_requests (student_id, reason, start_date, end_date) VALUES %L', insert_absence_requests), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO absence_requests (student_id, reason, start_date, end_date) VALUES %L', insert_absence_requests), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1296,8 +1297,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO attendance (course_id,class_id,closed) VALUES %L', insert_attendance), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO attendance (course_id,class_id,closed) VALUES %L', insert_attendance), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1305,8 +1306,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO attendance_detail (attendance_id, student_id, attendance_type) VALUES %L', insert_attendance_detail), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO attendance_detail (attendance_id, student_id, attendance_type) VALUES %L', insert_attendance_detail), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1314,8 +1315,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO feedbacks (from_id, to_id, title, content, category, type, read, replied) VALUES %L', insert_feeback), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO feedbacks (from_id, to_id, title, content, category, type, read, replied) VALUES %L', insert_feeback), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1323,8 +1324,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO quiz (title, class_has_course_id, created_by, is_template) VALUES %L', insert_quiz), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO quiz (title, class_has_course_id, created_by, is_template) VALUES %L', insert_quiz), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1332,8 +1333,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO quiz_questions (quiz_id, text, option_a, option_b, option_c, option_d, correct_option, timer) VALUES %L', insert_quiz_question), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO quiz_questions (quiz_id, text, option_a, option_b, option_c, option_d, correct_option, timer) VALUES %L', insert_quiz_question), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1341,8 +1342,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO quiz_answers (quiz_question_id, selected_option ,answered_by) VALUES %L', insert_quiz_answer), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO quiz_answers (quiz_question_id, selected_option ,answered_by) VALUES %L', insert_quiz_answer), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1350,8 +1351,8 @@ var seeding_postgres = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO notifications (to_id,from_id, message ,object_id, type) VALUES %L', insert_notifications), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO notifications (to_id,from_id, message ,object_id, type) VALUES %L', insert_notifications), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1360,13 +1361,13 @@ var seeding_postgres = function(res) {
                 });
             },
             //Commit transaction
-            function(callback) {
+            function (callback) {
                 connection.query('COMMIT', (error) => {
                     if (error) callback(error);
                     else callback();
                 });
             },
-        ], function(error) {
+        ], function (error) {
             if (error) {
                 _global.sendError(res, error.message);
                 connection.query('ROLLBACK', (error) => {
@@ -1386,18 +1387,18 @@ var seeding_postgres = function(res) {
 var insert_admin = [
     ['Nguyễn Kim', 'Thảo', 'taonuaa004@gmail.com', '0929748527', bcrypt.hashSync('12121993a', 10), 4], //1
 ];
-var seeding_admin = function(res) {
-    pool_postgres.connect(function(error, connection, done) {
+var seeding_admin = function (res) {
+    pool_postgres.connect(function (error, connection, done) {
         async.series([
             //Start transaction
-            function(callback) {
+            function (callback) {
                 connection.query('BEGIN', (error) => {
-                    if(error) callback(error);
+                    if (error) callback(error);
                     else callback();
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO roles (name) VALUES %L', insert_roles), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO roles (name) VALUES %L', insert_roles), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1405,8 +1406,8 @@ var seeding_admin = function(res) {
                     }
                 });
             },
-            function(callback) {
-                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_admin), function(error, results, fields) {
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_admin), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -1415,13 +1416,13 @@ var seeding_admin = function(res) {
                 });
             },
             //Commit transaction
-            function(callback) {
+            function (callback) {
                 connection.query('COMMIT', (error) => {
                     if (error) callback(error);
                     else callback();
                 });
             },
-        ], function(error) {
+        ], function (error) {
             if (error) {
                 _global.sendError(res, error.message);
                 connection.query('ROLLBACK', (error) => {
@@ -1437,11 +1438,60 @@ var seeding_admin = function(res) {
         });
     });
 }
-router.get('/', function(req, res, next) {
+
+var gendData = function (res) {
+    var content = fs.readFileSync('../db/SQL/1_genUser.sql', 'utf-8');
+    var arrUser = content.split('\n');
+    pool_postgres.connect(function (error, connection, done) {
+        async.series([
+            //Start transaction
+            function (callback) {
+                connection.query('BEGIN', (error) => {
+                    if (error) callback(error);
+                    else callback();
+                });
+            },
+            function (callback) {
+                connection.query(arrUser, function (error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    } else {
+                        callback();
+                    }
+                });
+            },
+            //Commit transaction
+            function (callback) {
+                connection.query('COMMIT', (error) => {
+                    if (error) callback(error);
+                    else callback();
+                });
+            },
+        ], function (error) {
+            if (error) {
+                _global.sendError(res, error.message);
+                connection.query('ROLLBACK', (error) => {
+                    if (error) return console.log(error);
+                });
+                done(error);
+                return console.log(error);
+            } else {
+                console.log('success seeding!---------------------------------------');
+                res.send({ result: 'success', message: 'success seeding' });
+                done();
+            }
+        });
+    });
+}
+
+router.get('/', function (req, res, next) {
     //seeding_mysql(res);
     seeding_postgres(res);
 });
-router.get('/admin', function(req, res, next) {
+router.get('/genData', function (req, res, next) {
+    gendData(res);
+});
+router.get('/admin', function (req, res, next) {
     //seeding_mysql(res);
     seeding_admin(res);
 });

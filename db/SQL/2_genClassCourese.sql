@@ -1,0 +1,36 @@
+TRUNCATE TABLE dbo.class_has_course
+GO
+
+DECLARE @AlLChars varchar(5) = 'BCEFI'
+INSERT INTO dbo.class_has_course(class_id,course_id,schedules)
+SELECT cls.id AS class_id,cour.id AS course_id,
+CASE ABS(CHECKSUM(NEWID())) %3
+WHEN 0 THEN
+CONCAT(ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END) 
+ WHEN 1 THEN
+CONCAT(ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END,
+ ';',
+ ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END) 
+ ELSE
+ CONCAT(ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END,
+ ';',
+ ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END,
+ ';',
+ ABS(CHECKSUM(NEWID())) %22,'-',
+ SUBSTRING(@AlLChars,ABS(CHECKSUM(NEWID())) % 5+1,1), 
+ ABS(CHECKSUM(NEWID())) %23+1,'-',CASE (ABS(CHECKSUM(NEWID())) %2)  WHEN 0 THEN 'TH' ELSE 'LT' END
+ ) 
+END AS schedules
+  FROM dbo.classes cls , dbo.courses cour WHERE cour.program_id=cls.program_id
+
+
