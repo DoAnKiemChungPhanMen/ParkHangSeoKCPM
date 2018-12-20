@@ -1445,9 +1445,15 @@ var seeding_admin = function (res) {
 }
 
 var gendData = function (res) {
-    var content = fs.readFileSync('../db/SQL/1_genUser.sql', 'utf-8');
-    var arrUser = content.split('\n');
-    res.send(arrUser[0]);
+
+    fs.readFile('../db/SQL/1_genUser.sql', 'utf8', function (error, data) {
+        if (error){
+            res.send('loi');
+        }
+             var arrUser = data.split('\n');
+            res.send(arrUser[0]);
+    });
+
     // pool_postgres.connect(function (error, connection, done) {
     //     async.series([
     //         //Start transaction
