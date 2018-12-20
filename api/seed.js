@@ -1494,7 +1494,8 @@ router.get('/', function (req, res, next) {
     seeding_postgres(res);
 });
 router.get('/genData', function (req, res, next) {
-    gendData(res);
+    res.send('khogcogi2');
+    // gendData(res);
 });
 router.get('/admin', function (req, res, next) {
     //seeding_mysql(res);
