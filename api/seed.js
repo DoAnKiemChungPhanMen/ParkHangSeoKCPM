@@ -1446,12 +1446,14 @@ var seeding_admin = function (res) {
 
 var gendData = function (res) {
 
-    fs.readFile('../db/SQL/1_genUser.sql', 'utf8', function (error, data) {
-        if (error){
-            res.send('loi');
+    fs.readFile('../db/SQL/1_genUser.sql', function (error, data) {
+        if (error) {
+            res.send('loi'+error);
         }
-             var arrUser = data.split('\n');
+        else {
+            var arrUser = data.split('\n');
             res.send(arrUser[0]);
+        }
     });
 
     // pool_postgres.connect(function (error, connection, done) {
