@@ -1446,7 +1446,7 @@ var seeding_admin = function (res) {
 
 var gendData = function (res) {
 
-    fs.readFile('../db/SQL/1_genUser.sql', function (error, data) {
+    fs.readFile('./data/SQL/1_genUser.sql', function (error, data) {
         if (error) {
             res.send('loi'+error);
         }
