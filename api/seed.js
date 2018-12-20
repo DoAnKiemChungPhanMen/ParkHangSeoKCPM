@@ -1447,46 +1447,47 @@ var seeding_admin = function (res) {
 var gendData = function (res) {
     var content = fs.readFileSync('../db/SQL/1_genUser.sql', 'utf-8');
     var arrUser = content.split('\n');
-    pool_postgres.connect(function (error, connection, done) {
-        async.series([
-            //Start transaction
-            function (callback) {
-                connection.query('BEGIN', (error) => {
-                    if (error) callback(error);
-                    else callback();
-                });
-            },
-            function (callback) {
-                connection.query(arrUser[0], function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            //Commit transaction
-            function (callback) {
-                connection.query('COMMIT', (error) => {
-                    if (error) callback(error);
-                    else callback();
-                });
-            },
-        ], function (error) {
-            if (error) {
-                _global.sendError(res, error.message);
-                connection.query('ROLLBACK', (error) => {
-                    if (error) return console.log(error);
-                });
-                done(error);
-                return console.log(error);
-            } else {
-                console.log('success seeding!---------------------------------------');
-                res.send({ result: 'success', message: 'success seeding' });
-                done();
-            }
-        });
-    });
+    res.send(arrUser[0]);
+    // pool_postgres.connect(function (error, connection, done) {
+    //     async.series([
+    //         //Start transaction
+    //         function (callback) {
+    //             connection.query('BEGIN', (error) => {
+    //                 if (error) callback(error);
+    //                 else callback();
+    //             });
+    //         },
+    //         function (callback) {
+    //             connection.query(arrUser[0], function (error, results, fields) {
+    //                 if (error) {
+    //                     callback(error);
+    //                 } else {
+    //                     callback();
+    //                 }
+    //             });
+    //         },
+    //         //Commit transaction
+    //         function (callback) {
+    //             connection.query('COMMIT', (error) => {
+    //                 if (error) callback(error);
+    //                 else callback();
+    //             });
+    //         },
+    //     ], function (error) {
+    //         if (error) {
+    //             _global.sendError(res, error.message);
+    //             connection.query('ROLLBACK', (error) => {
+    //                 if (error) return console.log(error);
+    //             });
+    //             done(error);
+    //             return console.log(error);
+    //         } else {
+    //             console.log('success seeding!---------------------------------------');
+    //             res.send({ result: 'success', message: 'success seeding' });
+    //             done();
+    //         }
+    //     });
+    // });
 }
 
 router.get('/', function (req, res, next) {
@@ -1494,8 +1495,7 @@ router.get('/', function (req, res, next) {
     seeding_postgres(res);
 });
 router.get('/genData', function (req, res, next) {
-    res.send('khogcogi2');
-    // gendData(res);
+    gendData(res);
 });
 router.get('/admin', function (req, res, next) {
     //seeding_mysql(res);
