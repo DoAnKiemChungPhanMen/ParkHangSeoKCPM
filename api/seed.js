@@ -35,134 +35,290 @@ var insert_semesters = [
 ];
 //[name,code]
 var insert_programs = [
-    ['Chất lượng cao', 'CLC'],
-    ['Việt Pháp', 'VP'],
-    ['Chương trình tiên tiến', 'TT'],
-    ['Cử nhân tài năng', 'TN'],
     ['Chính Quy', 'CTT'],
-    ['Cao Đẳng', 'CD'],
+    ['Việt Pháp', 'VP'],
+    ['Chất lượng cao', 'CLC'],
+    ['Cử nhân tài năng', 'TN'],
+    ['Chương trình tiên tiến', 'TT'],
 ];
 //[code,email,program_id]
 var insert_classes = [
-    ['16CTT', '16ctt@student.hcmus.edu.vn', 3], //1
-    ['15CTT', '15ctt@student.hcmus.edu.vn', 3], //2
-    ['14CTT', '14ctt@student.hcmus.edu.vn', 3], //3
-    ['13CTT', '13ctt@student.hcmus.edu.vn', 3], //4
-    ['12CTT', '12ctt@student.hcmus.edu.vn', 3], //5
+    ['16CTT', '16ctt@student.hcmus.edu.vn', 1], //1
+    ['15CTT', '15ctt@student.hcmus.edu.vn', 1], //2
+    ['14CTT', '14ctt@student.hcmus.edu.vn', 1], //3
+    ['13CTT', '13ctt@student.hcmus.edu.vn', 1], //4
     ['16VP', '16vp@student.hcmus.edu.vn', 2], //6
     ['15VP', '15vp@student.hcmus.edu.vn', 2], //7
     ['14VP', '14vp@student.hcmus.edu.vn', 2], //8
     ['13VP', '13vp@student.hcmus.edu.vn', 2], //9
-    ['12VP', '12vp@student.hcmus.edu.vn', 2], //9
-    ['16CLC', '16clc@student.hcmus.edu.vn', 1], //10
-    ['15CLC', '15clc@student.hcmus.edu.vn', 1], //11
-    ['14CLC', '14clc@student.hcmus.edu.vn', 1], //12
-    ['13CLC', '13clc@student.hcmus.edu.vn', 1], //13
-    ['12CLC', '12clc@student.hcmus.edu.vn', 1], //13
-    ['16CD', '16cd@student.hcmus.edu.vn', 5], //14
-    ['15CD', '15cd@student.hcmus.edu.vn', 5], //15
-    ['14CD', '14cd@student.hcmus.edu.vn', 5], //16
-    ['13CD', '13cd@student.hcmus.edu.vn', 5], //17
-    ['12CD', '12cd@student.hcmus.edu.vn', 5], //18
-    ['16TN', '16tn@student.hcmus.edu.vn', 5], //19
-    ['15TN', '15tn@student.hcmus.edu.vn', 5], //20
-    ['14TN', '14tn@student.hcmus.edu.vn', 5], //21
-    ['13TN', '13tn@student.hcmus.edu.vn', 5], //22
-    ['12TN', '12tn@student.hcmus.edu.vn', 5], //23
+    ['16CLC', '16clc@student.hcmus.edu.vn', 3], //10
+    ['15CLC', '15clc@student.hcmus.edu.vn', 3], //11
+    ['14CLC', '14clc@student.hcmus.edu.vn', 3], //12
+    ['13CLC', '13clc@student.hcmus.edu.vn', 3], //13
+    ['16TN', '16tn@student.hcmus.edu.vn', 4], //19
+    ['15TN', '15tn@student.hcmus.edu.vn', 4], //20
+    ['14TN', '14tn@student.hcmus.edu.vn', 4], //21
+    ['13TN', '13tn@student.hcmus.edu.vn', 4], //22
     ['16TN', '16tt@student.hcmus.edu.vn', 5], //19
     ['15TT', '15tt@student.hcmus.edu.vn', 5], //20
     ['14TT', '14tt@student.hcmus.edu.vn', 5], //21
     ['13TT', '13tt@student.hcmus.edu.vn', 5], //22
-    ['12TT', '12tt@student.hcmus.edu.vn', 5], //23
 ];
 //[code, name, semester_id, program_id, office_hour, note]
-var insert_courses = [
-    ['CS162', 'Introduction to Computer Science II', '4', '3', null, null], //1
-    ['MTH252', 'Calculus II', '4', '3', null, null], //2
-    ['PH212', 'General Physics II', '4', '3', 'T3 (14-16h) B38', null], //3
-    ['CTH001', 'Fundamental principles of  Marxism and Leninism', '4', '3', null, 'Bắt đầu từ tuần 16/1'], //4
-    ['TC001', 'Physical Education', '4', '3', null, null], //5
-    ['WR227', 'Technical Writing', '4', '3', 'T7 (8h30-11h30)', 'HT2'], //6
-    ['STAT451', 'Applied Statistics for Engineers and Scientists I', '4', '3', null, null], //7
-    ['CS251', 'Logical Structures', '4', '3', null, null], //8
-    ['CTH003', "Ho Chi Minh's Ideology", '4', '3', null, null], //9
-    ['ECE341', 'Computer Hardware', '4', '3', null, 'Tuần 9/1 học chiều T2 thay vì T3'], //10
-    ['CS322', 'Languages and Compiler Design II', '4', '3', null, null], //11
-    ['CS333', 'Introduction to Operating Systems', '4', '3', null, null], //12
-    ['CS350', 'Introduction to Computer Science II', '4', '3', null, null], //13
-    ['CS411', 'Computer Graphics', '4', '3', null, 'Sau tết học lại từ tuần 20/2'], //14
-    ['CS419', 'Introduction to Information Retrieval', '4', '3', null, null], //15
-    ['CS422', 'Software analysis and design', '4', '3', null, 'HT2'], //16
-    ['CS407', 'Technology Innovation and Leadership', '4', '3', 'T6 (8h30-9h30) JVN', null], //17
-    ['CS423', 'Software Testing', '4', '3', null, 'HT2'], //18
-    ['CS488', 'Software Engineering Capstone II', '4', '3', null, null], //19
-
-    ['CTT008', 'Kỹ thuật lập trình', '4', '1', null, null], //20
-    ['CTT010', 'Nhập môn CNTT 2', '4', '1', null, 'HT2'], //21
-    ['TTH026', 'Giải tích B1', '4', '1', null, null], //22
-    ['KTH001', 'Kinh tế đại cương', '4', '1', null, null], //23
-    ['CTT103', 'Hệ điều hành', '4', '1', null, 'HT2'], //24
-    ['CTT105', 'Mạng máy tính', '4', '1', null, null], //25
-    ['TTH043', 'Xác suất thống kê', '4', '1', null, null], //26
-    ['CTH003', 'Tư tưởng Hồ Chí Minh', '4', '1', null, null], //27
-    ['CTH001', 'Những nguyên lý cơ bản của CN Mác-Lênin', '4', '1', null, 'Bắt đầu từ 16/1'], //28
-    ['JAP001', 'Tiếng Nhật', '4', '1', null, null], //29
-    ['CTT204', 'Phân tích thiết kế hệ thống thông tin', '4', '1', null, 'HT2'], //30
-    ['CTT504', 'Phân tích thiết kế phần mềm', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //31
-    ['CTT528', 'Phát triển ứng dụng web', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //32
-    ['CTT503', 'Kiểm chứng phần mềm', '4', '1', null, 'HT2'], //33
-    ['CTT125', 'Khởi nghiệp', '4', '1', null, null], //34
-    ['PLD001', 'Pháp luật đại cương', '4', '1', null, null], //35
+var insert_courses=[
+    ['DEO251','Computational Biology and Chemistry',4,2,NULL,NULL],
+['BXD572','Advances in Engineering Software',4,1,NULL,NULL],
+['RPY307','Computers and Biomedical Research',4,1,NULL,NULL],
+['VKLW825','Computer Languages',4,3,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['BVX636','Computer Standards & Interfaces',4,3,NULL,NULL],
+['DIPX607','Computer Aided Geometric Design',4,5,NULL,NULL],
+['GUK125','Computational Geometry',4,5,NULL,NULL],
+['HGV739','Computer Vision, Graphics, and Image Processing',4,2,NULL,NULL],
+['CFG527','Computer Compacts',4,1,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['SPI115','Applied Soft Computing',4,3,NULL,NULL],
+['TDJXY828','Cognitive Systems Research',4,4,NULL,NULL],
+['DTAPU640','Artificial Intelligence',4,2,NULL,NULL],
+['TTYJ773','Computer Networks',4,4,NULL,NULL],
+['YFO817','Biometric Technology Today',4,5,NULL,NULL],
+['VFGP382','Artificial Intelligence in Medicine',4,5,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['MWU251','Computer Networks [1976],',4,2,NULL,NULL],
+['UPWF117','Computer Methods in Applied Mechanics and Engineering',4,3,NULL,NULL],
+['NGU771','Advanced Engineering Informatics',4,5,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['LJF488','Computer Programs in Biomedicine',4,5,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['ISCGD902','Computer Speech & Language',4,1,NULL,NULL],
+['SYSCA372','Computer Law & Security Report',4,2,NULL,NULL],
+['CKOHH125','Computers & Chemistry',4,1,NULL,NULL],
+['BBVTH758','Computer Methods and Programs in Biomedicine',4,1,NULL,NULL],
+['KFLID866','Computational Statistics & Data Analysis',4,1,NULL,NULL],
+['XWBV912','Computer Vision and Image Understanding',4,3,NULL,NULL],
+['ILJX823','Computers and Standards',4,2,NULL,NULL],
+['XYARK043','Artificial Intelligence in Engineering',4,2,NULL,NULL],
+['POTYY911','Computer Physics Reports',4,4,NULL,NULL],
+['OKU795','Computer Communications',4,3,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['ZMX660','Computers & Urban Society',4,4,NULL,NULL],
+['LBX450','Computers & Security',4,5,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['MUQ436','Computers & Structures',4,4,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['HTX111','Computer Languages, Systems & Structures',4,5,NULL,NULL],
+['EKIEU541','Computerized Medical Imaging and Graphics',4,3,NULL,NULL],
+['ITSYH813','Computer Networks and ISDN Systems',4,5,NULL,NULL],
+['QHWQB333','Computer Fraud & Security',4,4,NULL,NULL],
+['GKPT667','Ad Hoc Networks',4,2,NULL,NULL],
+['PUM854','Computer Fraud & Security Bulletin',4,4,NULL,NULL],
+['FOPI085','Computers in Biology and Medicine',4,2,NULL,NULL],
+['OMWT331','Computers & Geosciences',4,1,NULL,NULL],
+['TDO667','Computer Physics Communications',4,1,NULL,NULL],
+['IVR855','AEU - International Journal of Electronics and Communications',4,4,NULL,NULL],
+['XKNKO437','Computers and Geotechnics',4,5,'Sed ut perspiciatis unde omnis ',NULL,NULL,NULL],
+['DJRQ310','Computer-Aided Design',4,4,NULL,NULL],
+['RSR044','Cognitive Science',4,4,NULL,NULL],
+['LFS755','Computers and Electronics in Agriculture',4,1,NULL,NULL],
+['KUS664','Computer Graphics and Image Processing',4,3,NULL,NULL],
+['BOC224','Card Technology Today',4,2,NULL,NULL],
+['WMD836','Computers & Graphics',4,3,NULL,NULL],
+['IXFM718','Computer Audit Update',4,3,NULL,NULL],
 ];
+
 //[class_id,course_id,schedules]
-var insert_class_has_course = [
-    ['1', '1', '4-I44-LT;8-I41-LT;14-I11C-TH;15-I11C-TH;22-I44-LT'], //1
-    ['1', '2', '2-I42-TH;3-I42-TH;5-I44-LT;12-I44-LT'], //2
-    ['1', '3', '13-I42-LT;15-I42-TH;18-I42-LT;19-I42-TH'], //3
-    ['1', '4', '16-I44-LT;17-I44-LT'], //4
-    ['1', '5', '20-OUT-TH;21-OUT-TH'], //5
-
-    ['2', '6', '12-I42-LT;20-I42-LT'], //6
-    ['2', '7', '8-I42-LT;9-I42-LT;18-B11A-TH'], //7
-    ['2', '8', '1-I42-LT;10-I23-TH;11-I23-TH;17-I23-LT'], //8
-    ['2', '9', '14-I23-LT;15-I23-LT'], //9
-    ['2', '10', '6-B11A-LT;7-B11A-LT;13-I11C-TH'], //10
-
-    ['3', '11', '1-I23-LT;5-I23-LT;12-I11C-TH;12-I44-LT'], //11
-    ['3', '12', '0-I23-LT;6-I11C-TH;7-I11C-TH;16-I23-LT'], //12
-    ['3', '13', '4-I23-LT;13-I23-LT;22-I23-TH'], //13
-    ['3', '14', '2-I11C-TH;11-I44-LT;19-I44-LT'], //14
-    ['3', '15', '3-I44-LT;20-I44-LT;23-I23-TH'], //15
-    ['3', '16', '8-I23-LT;9-I23-LT'], //16
-
-    ['4', '17', '6-I44-LT;7-I41-LT'], //17
-    ['4', '18', '2-I44-LT;10-I44-LT'], //18
-    ['4', '19', '12-I41-LT;13-I41-LT'], //19
-
-    ['9', '20', '0-B11A-LT;7-I61-TH;20-B11A-LT'], //20
-    ['9', '21', '5-B11A-LT;21-I41-LT'], //21
-    ['9', '22', '14-B11A-LT;15-B11A-LT;23-I41-TH'], //22
-    ['9', '23', '10-B11A-LT;19-I41-TH;22-IB11A-LT'], //23
-
-    ['10', '20', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //24
-    ['10', '21', '4-B11A-LT;20-B11A-LT'], //25
-    ['10', '22', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //26
-    ['10', '23', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //27
-
-    ['11', '24', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //28
-    ['11', '25', '4-B11A-LT;20-B11A-LT'], //29
-    ['11', '26', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //30
-    ['11', '27', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //31
-    ['11', '28', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //32
-
-    ['12', '29', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //33
-    ['12', '30', '16-I41-LT;17-I41-LT'], //34
-    ['12', '31', '10-B11B-LT;11-B11B-LT'], //35
-    ['12', '32', '6-B11B-LT;7-B11B-TH'], //36
-    ['12', '33', '1-I44-LT;18-I44-LT'], //37
-
-    ['13', '34', '6-I42-LT;7-I42-LT'], //38
-    ['13', '35', '16-B11A-LT;17-B11A-LT'], //39
+var  insert_class_has_course=[
+    [1, 6, '7-B17-LT;18-B19-LT;20-E3-TH'],
+[1, 7, '21-F9-TH;1-B3-TH'],
+[1, 14, '7-F13-TH'],
+[1, 15, '6-F10-LT;1-B23-LT;16-I14-TH'],
+[1, 18, '17-F15-LT;9-B11-LT'],
+[1, 19, '1-B17-TH;3-C16-TH'],
+[1, 31, '19-C13-LT'],
+[1, 33, '12-F22-TH'],
+[1, 35, '14-I7-LT;9-B10-TH;13-F17-LT'],
+[1, 43, '19-I23-LT;21-B3-TH;12-F9-TH'],
+[2, 6, '0-E21-TH'],
+[2, 7, '19-C3-LT'],
+[2, 14, '19-F12-TH'],
+[2, 15, '11-I2-LT'],
+[2, 18, '4-B7-LT;21-C18-TH;2-E16-LT'],
+[2, 19, '2-I22-TH'],
+[2, 31, '12-I17-TH'],
+[2, 33, '11-E19-TH'],
+[2, 35, '9-B19-TH;12-B4-TH;13-C21-LT'],
+[2, 43, '19-I7-LT;11-E1-LT'],
+[3, 6, '3-E14-LT;7-I22-TH'],
+[3, 7, '9-E5-LT;18-E4-TH;16-F2-TH'],
+[3, 14, '15-F11-TH;12-I17-TH;14-B9-LT'],
+[3, 15, '10-F9-LT;12-E1-LT;10-B5-TH'],
+[3, 18, '11-C21-TH;9-I19-LT;14-I17-TH'],
+[3, 19, '2-I3-LT;13-E7-TH;21-E21-TH'],
+[3, 31, '4-E6-TH;18-C21-LT;7-B19-LT'],
+[3, 33, '5-I23-TH;4-E1-LT;10-I1-TH'],
+[3, 35, '18-C20-TH;14-E19-TH;18-C4-TH'],
+[3, 43, '9-I17-LT'],
+[4, 6, '1-I15-TH;6-F7-LT;15-E18-TH'],
+[4, 7, '15-F14-LT;8-E12-TH'],
+[4, 14, '2-E14-TH;13-E3-LT'],
+[4, 15, '15-I14-TH;6-I12-TH;2-I5-TH'],
+[4, 18, '11-I14-TH;17-B19-TH;14-I1-LT'],
+[4, 19, '0-I14-LT;21-I2-TH'],
+[4, 31, '12-I20-LT;13-E23-TH;5-B12-LT'],
+[4, 33, '14-I16-LT;0-E1-LT;19-B19-TH'],
+[4, 35, '14-B7-TH;8-I11-TH;14-B17-TH'],
+[4, 43, '20-F10-TH;2-B4-TH;21-I1-TH'],
+[5, 1, '2-E17-TH;19-C21-LT'],
+[5, 8, '7-C5-LT;4-E9-TH;15-B1-LT'],
+[5, 12, '20-C2-TH;5-I22-TH;3-B19-TH'],
+[5, 16, '19-B1-LT'],
+[5, 21, '19-F7-TH;16-I5-LT'],
+[5, 26, '18-I13-LT;18-F14-TH;20-C5-TH'],
+[5, 27, '7-F22-LT;2-F10-LT'],
+[5, 37, '14-C18-TH'],
+[5, 39, '13-E2-TH;4-E14-TH;0-I12-LT'],
+[5, 48, '17-I8-TH'],
+[6, 1, '18-B14-TH;19-C5-TH;15-E14-TH'],
+[6, 8, '12-E16-TH;1-I6-LT;10-F3-LT'],
+[6, 12, '5-F23-LT'],
+[6, 16, '13-C21-TH'],
+[6, 21, '14-F8-TH'],
+[6, 26, '21-E3-LT;10-F23-LT'],
+[6, 27, '10-E14-LT;16-F14-LT;14-E8-TH'],
+[6, 37, '8-B16-TH;4-I4-TH;11-E13-TH'],
+[6, 39, '4-I13-TH'],
+[6, 48, '16-I15-TH;13-I5-TH;9-F8-TH'],
+[7, 1, '18-I11-LT;5-I13-LT'],
+[7, 8, '9-F9-TH;2-C2-LT;16-I6-LT'],
+[7, 12, '9-B23-TH'],
+[7, 16, '19-C10-LT;13-E7-LT'],
+[7, 21, '18-B7-TH;1-B19-LT;7-I16-LT'],
+[7, 26, '3-I23-TH;18-I22-LT;3-B22-LT'],
+[7, 27, '19-F4-TH;19-F2-TH'],
+[7, 37, '15-C7-TH'],
+[7, 39, '13-I16-TH;13-C7-TH;1-I16-TH'],
+[7, 48, '0-E10-TH;18-B8-LT'],
+[8, 1, '5-B2-TH;16-C3-LT'],
+[8, 8, '16-E13-LT;10-B19-LT;12-C9-TH'],
+[8, 12, '16-I11-LT;9-B17-TH;1-I10-LT'],
+[8, 16, '11-C11-LT;1-I13-LT;6-E11-TH'],
+[8, 21, '19-E23-TH'],
+[8, 26, '11-I10-LT'],
+[8, 27, '3-C15-LT;7-F21-TH'],
+[8, 37, '16-E23-LT;14-F15-LT'],
+[8, 39, '7-F3-TH'],
+[8, 48, '15-B23-LT'],
+[9, 2, '6-E17-LT'],
+[9, 3, '9-B2-LT;3-C13-LT'],
+[9, 9, '14-B10-LT'],
+[9, 20, '18-C9-LT'],
+[9, 22, '21-B23-TH;16-I3-TH;1-F16-LT'],
+[9, 23, '19-I2-TH'],
+[9, 24, '7-F14-TH;14-B19-LT;9-I14-LT'],
+[9, 40, '9-F21-TH;0-I23-TH;20-F5-TH'],
+[9, 41, '5-C4-TH;1-F8-TH'],
+[9, 46, '19-F23-TH;3-F13-TH;1-F6-TH'],
+[10, 2, '13-C17-LT;8-E6-TH;1-E1-LT'],
+[10, 3, '18-C1-TH'],
+[10, 9, '15-F22-TH;16-F21-LT'],
+[10, 20, '8-F6-TH'],
+[10, 22, '15-E13-TH'],
+[10, 23, '18-F5-TH;4-F7-TH;17-B6-LT'],
+[10, 24, '10-F23-TH;21-C21-TH;7-E11-TH'],
+[10, 40, '0-B3-LT;0-E11-LT'],
+[10, 41, '11-E22-LT;18-C21-TH;19-I10-LT'],
+[10, 46, '5-C12-TH'],
+[11, 2, '21-E17-LT'],
+[11, 3, '15-C10-LT'],
+[11, 9, '15-C12-LT;19-E18-LT;0-F20-TH'],
+[11, 20, '18-B19-TH;15-B23-LT;20-F23-LT'],
+[11, 22, '1-E23-TH;12-I15-LT;15-C19-LT'],
+[11, 23, '9-C21-LT;5-C20-LT;2-C10-LT'],
+[11, 24, '16-F8-LT;19-F10-LT'],
+[11, 40, '15-F5-LT;11-E13-TH;17-C4-LT'],
+[11, 41, '11-F7-LT;1-C14-LT'],
+[11, 46, '13-F4-LT;2-E9-LT;12-F21-LT'],
+[12, 2, '6-F4-TH;14-C8-LT;11-I6-TH'],
+[12, 3, '3-B9-LT;8-C10-TH;4-E22-TH'],
+[12, 9, '21-F18-LT'],
+[12, 20, '6-C2-LT'],
+[12, 22, '0-F1-LT;16-I2-LT'],
+[12, 23, '0-F15-TH'],
+[12, 24, '16-C23-TH;8-E9-TH;18-B20-LT'],
+[12, 40, '12-B18-TH;20-B14-TH;4-E19-TH'],
+[12, 41, '2-I12-LT;15-I8-LT;8-E5-TH'],
+[12, 46, '12-C4-LT;2-F14-TH'],
+[13, 11, '6-I3-LT;5-E1-LT;14-E8-LT'],
+[13, 13, '17-C14-LT;21-C16-TH'],
+[13, 28, '7-C22-LT'],
+[13, 30, '5-E16-LT;0-I21-TH'],
+[13, 32, '1-E1-TH'],
+[13, 36, '3-F18-LT;2-I16-LT;16-C13-LT'],
+[13, 38, '6-B22-LT;10-E10-TH'],
+[13, 42, '7-B11-LT;16-I10-LT;3-F15-LT'],
+[13, 44, '21-E2-LT;17-I15-TH;6-E5-TH'],
+[13, 45, '20-C16-LT;8-C18-LT'],
+[14, 11, '11-E18-TH;2-I2-TH;9-F18-TH'],
+[14, 13, '10-I2-TH;17-B21-TH'],
+[14, 28, '9-E20-TH;4-I4-LT'],
+[14, 30, '0-B10-TH;11-F6-LT;3-B13-TH'],
+[14, 32, '21-B14-LT;16-F21-TH;5-C4-LT'],
+[14, 36, '11-B19-TH'],
+[14, 38, '6-E14-TH;4-C19-LT;21-E13-LT'],
+[14, 42, '16-I10-TH'],
+[14, 44, '9-F7-TH;9-I16-LT;1-B21-TH'],
+[14, 45, '4-B18-TH'],
+[15, 11, '8-B11-LT'],
+[15, 13, '17-B20-LT;14-B3-LT'],
+[15, 28, '19-C20-LT;19-F15-TH;19-E4-LT'],
+[15, 30, '13-B14-LT;20-F21-LT;18-F2-TH'],
+[15, 32, '21-F7-TH'],
+[15, 36, '2-F17-TH;10-F3-LT;14-C18-TH'],
+[15, 38, '11-C6-LT'],
+[15, 42, '7-B15-TH;5-I6-TH;8-B9-LT'],
+[15, 44, '3-I16-TH'],
+[15, 45, '8-F12-TH;5-B12-TH;20-B20-TH'],
+[16, 11, '15-F5-LT;17-I21-TH;6-E14-TH'],
+[16, 13, '5-F9-LT;14-C14-TH'],
+[16, 28, '19-F20-LT;8-I6-LT'],
+[16, 30, '6-F5-TH;11-I3-LT;20-C16-TH'],
+[16, 32, '19-B11-TH'],
+[16, 36, '20-C6-TH;7-I5-TH;19-E8-LT'],
+[16, 38, '14-E18-TH'],
+[16, 42, '17-E3-LT'],
+[16, 44, '4-B9-LT;3-E7-LT;20-I7-LT'],
+[16, 45, '17-E5-TH;1-B3-LT;21-F21-TH'],
+[17, 4, '11-B19-TH;11-C7-TH'],
+[17, 5, '14-I2-TH'],
+[17, 10, '13-F11-LT;15-F6-LT;6-E12-TH'],
+[17, 17, '10-F7-TH;20-E13-TH'],
+[17, 25, '4-F13-LT;6-C18-TH'],
+[17, 29, '3-E17-LT'],
+[17, 34, '0-E12-TH;18-E1-LT;19-E12-LT'],
+[17, 47, '5-I16-LT;13-C7-TH'],
+[17, 49, '10-C17-LT;2-B5-TH'],
+[17, 50, '10-I21-LT;3-E10-LT'],
+[18, 4, '12-C17-TH;16-C19-LT;0-E20-TH'],
+[18, 5, '16-I18-TH;18-F17-TH;6-C8-LT'],
+[18, 10, '14-E4-TH;16-E1-LT;7-E6-LT'],
+[18, 17, '13-E23-TH;2-B5-LT;19-B1-TH'],
+[18, 25, '18-E23-TH'],
+[18, 29, '17-F7-TH;9-F6-TH;18-E1-TH'],
+[18, 34, '11-I16-TH;17-B14-TH;10-C17-LT'],
+[18, 47, '12-C8-LT;0-E15-LT'],
+[18, 49, '19-E7-TH;15-E20-LT;4-C2-LT'],
+[18, 50, '20-B9-LT'],
+[19, 4, '15-I5-TH'],
+[19, 5, '11-C3-LT'],
+[19, 10, '18-F10-LT'],
+[19, 17, '2-C4-TH;18-F3-LT;3-E9-TH'],
+[19, 25, '10-B16-LT;0-E18-TH;18-B5-LT'],
+[19, 29, '1-I22-TH'],
+[19, 34, '12-F9-LT'],
+[19, 47, '6-E15-TH'],
+[19, 49, '3-E3-LT;18-B4-TH;2-F20-TH'],
+[19, 50, '13-E4-LT;9-C7-LT;17-I8-TH'],
+[20, 4, '0-E22-TH;17-B12-TH;1-B1-TH'],
+[20, 5, '2-C14-TH;6-C5-LT'],
+[20, 10, '19-I7-TH;10-I14-LT;20-I18-TH'],
+[20, 17, '13-B17-LT;3-F5-LT;16-C20-TH'],
+[20, 25, '1-B22-LT;17-C10-LT;1-E6-LT'],
+[20, 29, '10-F16-LT;12-I22-TH;9-I13-LT'],
+[20, 34, '19-I5-TH;7-F18-LT;14-B2-LT'],
+[20, 47, '6-F8-TH;21-C21-TH;17-F19-LT'],
+[20, 49, '21-I14-TH;8-C9-LT;6-I11-LT'],
 ];
 //[first_name,last_name,email,phone,password,role_id]
 var insert_users = [
@@ -227,7 +383,7 @@ var insert_users = [
     ['Lê Viết', 'Long', 'lvlong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('lvlong', 10), 2], //59
     ['Nguyễn Thành', 'Long', 'ntlong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('ntlong', 10), 2], //60
     ['Lê Nguyễn Hoài', 'Nam', 'lnhnam@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('lnhnam', 10), 2], //61
-    ['Bùi Đắc', 'Thịnh', 'bdthinh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('bdthinh', 10), 2], //62
+    ['Bùi Đắc', 'Thịnh', 'bdthinh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('bdthinh', 10), 2], //  
 
     //16APCS
     ['Nguyễn Toàn', 'Anh', '1651001@student.hcmus.edu.vn', '01228718705', bcrypt.hashSync('1353019', 10), 1], //63
@@ -1284,15 +1440,15 @@ var seeding_postgres = function (res) {
                     }
                 });
             },
-            function (callback) {
-                connection.query(format('INSERT INTO student_enroll_course (class_has_course_id,student_id) VALUES %L', insert_student_enroll_course), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
+            // function (callback) {
+            //     connection.query(format('INSERT INTO student_enroll_course (class_has_course_id,student_id) VALUES %L', insert_student_enroll_course), function (error, results, fields) {
+            //         if (error) {
+            //             callback(error);
+            //         } else {
+            //             callback();
+            //         }
+            //     });
+            // },
             function (callback) {
                 connection.query(format('INSERT INTO absence_requests (student_id, reason, start_date, end_date) VALUES %L', insert_absence_requests), function (error, results, fields) {
                     if (error) {
@@ -1302,24 +1458,24 @@ var seeding_postgres = function (res) {
                     }
                 });
             },
-            function (callback) {
-                connection.query(format('INSERT INTO attendance (course_id,class_id,closed) VALUES %L', insert_attendance), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO attendance_detail (attendance_id, student_id, attendance_type) VALUES %L', insert_attendance_detail), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
+            // function (callback) {
+            //     connection.query(format('INSERT INTO attendance (course_id,class_id,closed) VALUES %L', insert_attendance), function (error, results, fields) {
+            //         if (error) {
+            //             callback(error);
+            //         } else {
+            //             callback();
+            //         }
+            //     });
+            // },
+            // function (callback) {
+            //     connection.query(format('INSERT INTO attendance_detail (attendance_id, student_id, attendance_type) VALUES %L', insert_attendance_detail), function (error, results, fields) {
+            //         if (error) {
+            //             callback(error);
+            //         } else {
+            //             callback();
+            //         }
+            //     });
+            // },
             function (callback) {
                 connection.query(format('INSERT INTO feedbacks (from_id, to_id, title, content, category, type, read, replied) VALUES %L', insert_feeback), function (error, results, fields) {
                     if (error) {
@@ -1510,3 +1666,91 @@ router.get('/admin', function (req, res, next) {
     seeding_admin(res);
 });
 module.exports = router;
+
+// var insert_class_has_course = [
+//     ['1', '1', '4-I44-LT;8-I41-LT;14-I11C-TH;15-I11C-TH;22-I44-LT'], //1
+//     ['1', '2', '2-I42-TH;3-I42-TH;5-I44-LT;12-I44-LT'], //2
+//     ['1', '3', '13-I42-LT;15-I42-TH;18-I42-LT;19-I42-TH'], //3
+//     ['1', '4', '16-I44-LT;17-I44-LT'], //4
+//     ['1', '5', '20-OUT-TH;21-OUT-TH'], //5
+
+//     ['2', '6', '12-I42-LT;20-I42-LT'], //6
+//     ['2', '7', '8-I42-LT;9-I42-LT;18-B11A-TH'], //7
+//     ['2', '8', '1-I42-LT;10-I23-TH;11-I23-TH;17-I23-LT'], //8
+//     ['2', '9', '14-I23-LT;15-I23-LT'], //9
+//     ['2', '10', '6-B11A-LT;7-B11A-LT;13-I11C-TH'], //10
+
+//     ['3', '11', '1-I23-LT;5-I23-LT;12-I11C-TH;12-I44-LT'], //11
+//     ['3', '12', '0-I23-LT;6-I11C-TH;7-I11C-TH;16-I23-LT'], //12
+//     ['3', '13', '4-I23-LT;13-I23-LT;22-I23-TH'], //13
+//     ['3', '14', '2-I11C-TH;11-I44-LT;19-I44-LT'], //14
+//     ['3', '15', '3-I44-LT;20-I44-LT;23-I23-TH'], //15
+//     ['3', '16', '8-I23-LT;9-I23-LT'], //16
+
+//     ['4', '17', '6-I44-LT;7-I41-LT'], //17
+//     ['4', '18', '2-I44-LT;10-I44-LT'], //18
+//     ['4', '19', '12-I41-LT;13-I41-LT'], //19
+
+//     ['9', '20', '0-B11A-LT;7-I61-TH;20-B11A-LT'], //20
+//     ['9', '21', '5-B11A-LT;21-I41-LT'], //21
+//     ['9', '22', '14-B11A-LT;15-B11A-LT;23-I41-TH'], //22
+//     ['9', '23', '10-B11A-LT;19-I41-TH;22-IB11A-LT'], //23
+
+//     ['10', '20', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //24
+//     ['10', '21', '4-B11A-LT;20-B11A-LT'], //25
+//     ['10', '22', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //26
+//     ['10', '23', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //27
+
+//     ['11', '24', '1-B11A-LT;6-I61-TH;21-B11A-LT'], //28
+//     ['11', '25', '4-B11A-LT;20-B11A-LT'], //29
+//     ['11', '26', '12-B11A-LT;13-B11A-TH;22-I41-TH'], //30
+//     ['11', '27', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //31
+//     ['11', '28', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //32
+
+//     ['12', '29', '11-B11A-LT;18-I41-TH;23-IB11A-LT'], //33
+//     ['12', '30', '16-I41-LT;17-I41-LT'], //34
+//     ['12', '31', '10-B11B-LT;11-B11B-LT'], //35
+//     ['12', '32', '6-B11B-LT;7-B11B-TH'], //36
+//     ['12', '33', '1-I44-LT;18-I44-LT'], //37
+
+//     ['13', '34', '6-I42-LT;7-I42-LT'], //38
+//     ['13', '35', '16-B11A-LT;17-B11A-LT'], //39
+// ];
+// var insert_courses = [
+//     ['CS162', 'Introduction to Computer Science II', '4', '3', null, null], //1
+//     ['MTH252', 'Calculus II', '4', '3', null, null], //2
+//     ['PH212', 'General Physics II', '4', '3', 'T3 (14-16h) B38', null], //3
+//     ['CTH001', 'Fundamental principles of  Marxism and Leninism', '4', '3', null, 'Bắt đầu từ tuần 16/1'], //4
+//     ['TC001', 'Physical Education', '4', '3', null, null], //5
+//     ['WR227', 'Technical Writing', '4', '3', 'T7 (8h30-11h30)', 'HT2'], //6
+//     ['STAT451', 'Applied Statistics for Engineers and Scientists I', '4', '3', null, null], //7
+//     ['CS251', 'Logical Structures', '4', '3', null, null], //8
+//     ['CTH003', "Ho Chi Minh's Ideology", '4', '3', null, null], //9
+//     ['ECE341', 'Computer Hardware', '4', '3', null, 'Tuần 9/1 học chiều T2 thay vì T3'], //10
+//     ['CS322', 'Languages and Compiler Design II', '4', '3', null, null], //11
+//     ['CS333', 'Introduction to Operating Systems', '4', '3', null, null], //12
+//     ['CS350', 'Introduction to Computer Science II', '4', '3', null, null], //13
+//     ['CS411', 'Computer Graphics', '4', '3', null, 'Sau tết học lại từ tuần 20/2'], //14
+//     ['CS419', 'Introduction to Information Retrieval', '4', '3', null, null], //15
+//     ['CS422', 'Software analysis and design', '4', '3', null, 'HT2'], //16
+//     ['CS407', 'Technology Innovation and Leadership', '4', '3', 'T6 (8h30-9h30) JVN', null], //17
+//     ['CS423', 'Software Testing', '4', '3', null, 'HT2'], //18
+//     ['CS488', 'Software Engineering Capstone II', '4', '3', null, null], //19
+
+//     ['CTT008', 'Kỹ thuật lập trình', '4', '1', null, null], //20
+//     ['CTT010', 'Nhập môn CNTT 2', '4', '1', null, 'HT2'], //21
+//     ['TTH026', 'Giải tích B1', '4', '1', null, null], //22
+//     ['KTH001', 'Kinh tế đại cương', '4', '1', null, null], //23
+//     ['CTT103', 'Hệ điều hành', '4', '1', null, 'HT2'], //24
+//     ['CTT105', 'Mạng máy tính', '4', '1', null, null], //25
+//     ['TTH043', 'Xác suất thống kê', '4', '1', null, null], //26
+//     ['CTH003', 'Tư tưởng Hồ Chí Minh', '4', '1', null, null], //27
+//     ['CTH001', 'Những nguyên lý cơ bản của CN Mác-Lênin', '4', '1', null, 'Bắt đầu từ 16/1'], //28
+//     ['JAP001', 'Tiếng Nhật', '4', '1', null, null], //29
+//     ['CTT204', 'Phân tích thiết kế hệ thống thông tin', '4', '1', null, 'HT2'], //30
+//     ['CTT504', 'Phân tích thiết kế phần mềm', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //31
+//     ['CTT528', 'Phát triển ứng dụng web', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //32
+//     ['CTT503', 'Kiểm chứng phần mềm', '4', '1', null, 'HT2'], //33
+//     ['CTT125', 'Khởi nghiệp', '4', '1', null, null], //34
+//     ['PLD001', 'Pháp luật đại cương', '4', '1', null, null], //35
+// ];
