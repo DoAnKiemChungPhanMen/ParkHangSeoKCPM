@@ -15,13 +15,6 @@ module.exports = {
         port:'5432',
         database: 'd2ul79s8scdp7b'
     },
-    //db_postgres: {
-    //    host: 'localhost',
-    //    user: 'postgres',
-    //    password: 'a',
-    //    port:'5432',
-    //    database: 'qldd'
-    //},
     host: 'https://kiemchungphanmen12.herokuapp.com',
     email_setting: {
         host: 'smtp.office365.com', // Office 365 server
