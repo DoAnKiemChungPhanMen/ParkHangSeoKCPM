@@ -30,7 +30,7 @@ var insert_semesters = [
     ['HK3 2017-2018', '2018-5-8 00:00:00', '2018-8-11 00:00:00', '16/8/2018 - 25/9/2018'],   //9
     ['HK1 2018-2019', '2018-10-2 00:00:00', '2018-12-25 00:00:00', '24/12/2018 - 6/1/2018'],  //10
     ['HK2 2018-2019', '2019-1-16 00:00:00', '2019-5-2 00:00:00', '30/4/2019 - 2/5/2019'],     //11
-    ['HK3 2018-2019', '2019-5-8 00:00:00', '2019-8-11 00:00:00', '16/8/2019 - 25/9/2019'],    //12
+    ['HK3 2018-2019', '2019-5-8 00:00:00', '2019-8-11 00:00:00', '16/8/2019 - 25/9/2019']    //12
 ];
 
 //[name,code]
@@ -39,7 +39,7 @@ var insert_programs = [
     ['Việt Pháp', 'VP'],
     ['Chất lượng cao', 'CLC'],
     ['Cử nhân tài năng', 'TN'],
-    ['Chương trình tiên tiến', 'TT'],
+    ['Chương trình tiên tiến', 'TT']
 ];
 
 //[code,email,program_id]
@@ -117,7 +117,7 @@ var insert_courses = [
     ['KUS664', 'Computer Graphics and Image Processing', 4, 3, null, null],
     ['BOC224', 'Card Technology Today', 4, 2, null, null],
     ['WMD836', 'Computers & Graphics', 4, 3, null, null],
-    ['IXFM718', 'Computer Audit Update', 4, 3, null, null],
+    ['IXFM718', 'Computer Audit Update', 4, 3, null, null]
 ];
 
 //[class_id,course_id,schedules]
@@ -269,7 +269,7 @@ var insert_class_has_course = [
     [20, 10, '8-E15-TH;2-B3-LT;0-E15-TH'],
     [20, 17, '5-I15-LT;9-F23-LT;6-E19-TH'],
     [20, 47, '0-E14-TH;12-F23-TH;13-I4-LT'],
-    [20, 50, '10-C19-TH'],
+    [20, 50, '10-C19-TH']
 ];
 
 //[first_name,last_name,email,phone,password,role_id]
@@ -2338,7 +2338,7 @@ var insert_users = [
     ['Cruz', 'Aaron', '1615452@student.hcmus.edu.vn', '1-844-175-65', bcrypt.hashSync('1512517', 10), 1],
     ['Brown', 'Erik', '1512851@student.hcmus.edu.vn', '0800-388-537', bcrypt.hashSync('1512517', 10), 1],
     ['Edwards', 'Bobby', '1514143@student.hcmus.edu.vn', '1-877-754-43', bcrypt.hashSync('1512517', 10), 1],
-    ['Foster', 'Ernest', '1614617@student.hcmus.edu.vn', '1-844-688-21', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Ernest', '1614617@student.hcmus.edu.vn', '1-844-688-21', bcrypt.hashSync('1512517', 10), 1]
 ];
 
 //[teacher_id,course_id,teacher_role],
@@ -2435,7 +2435,7 @@ var insert_teacher_teach_course = [
     [59, 36, 1],
     [59, 45, 1],
     [60, 38, 1],
-    [60, 49, 0],
+    [60, 49, 0]
 ];
 
 //[id, stud_id, class_id]
@@ -4439,7 +4439,7 @@ var insert_students = [
     [2059, '1615452', 17],
     [2060, '1512851', 2],
     [2061, '1514143', 14],
-    [2062, '1614617', 13],
+    [2062, '1614617', 13]
 ];
 
 //[course_id , student_id]
@@ -5362,13 +5362,13 @@ var insert_student_enroll_course = [
     [136, 756],
     [136, 1276],
     [136, 1393],
-    [136, 1655],
+    [136, 1655]
 ];
 
 //[student_id, reason, start_date, end_date]
 var insert_absence_requests = [
     [63, 'Đi khám nghĩa vụ quân sự', '2017-05-31 00:00:00', '2017-06-01 00:00:00'],
-    [63, 'Đi thi ACM', '2017-06-03 00:00:00', '2017-06-10 00:00:00'],
+    [63, 'Đi thi ACM', '2017-06-03 00:00:00', '2017-06-10 00:00:00']
 ];
 
 //[course_id,class_id,closed]
@@ -5444,7 +5444,7 @@ var insert_attendance = [
     [34, 18, 0],
     [47, 18, 0],
     [49, 18, 0],
-    [50, 18, 0],
+    [50, 18, 0]
 ];
 
 //[attendance_id, student_id, attendance_type]
@@ -6367,7 +6367,7 @@ var insert_attendance_detail = [
     [72, 756, 1],
     [72, 1276, 1],
     [72, 1393, 1],
-    [72, 1655, 1],
+    [72, 1655, 1]
 ];
 
 //[from_id, to_id, title, content, category, type, read, replied]
@@ -6392,7 +6392,7 @@ var insert_quiz = [
 var insert_quiz_question = [
     [1, `Kiểu nào có kích thước lớn nhất`, 'int', 'char', 'long', 'double', 'double', 10], //1
     [1, `Dạng hậu tố của biểu thức 9 - (5 + 2) là ?`, '95-+2', '95-2+', '952+-', '95+2-', '952+-', 10], //2
-    [1, `Giả sử a và b là hai số thực. Biểu thức nào dưới đây là không được phép theo cú pháp của ngôn ngữ lập trình C?`, 'ab', 'a-=b', 'a>>=b', 'a*=b', 'a>>=b', 10],//3
+    [1, `Giả sử a và b là hai số thực. Biểu thức nào dưới đây là không được phép theo cú pháp của ngôn ngữ lập trình C?`, 'ab', 'a-=b', 'a>>=b', 'a*=b', 'a>>=b', 10]//3
 ];
 
 //[quiz_question_id, selected_option, answered_by]
@@ -6402,7 +6402,7 @@ var insert_quiz_answer = [
     [2, `B`, 114], //3
     [2, `C`, 115], //4
     [3, `C`, 116], //3
-    [3, `A`, 117], //4
+    [3, `A`, 117] //4
 ];
 
 //[to_id, message, object_id, type]
