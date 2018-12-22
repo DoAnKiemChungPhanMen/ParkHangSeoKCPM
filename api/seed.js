@@ -505,6 +505,8 @@ var insert_users = [
     ['Myers', 'Salvador', '1615450@student.hcmus.edu.vn', '1-855-236-60', bcrypt.hashSync('1512517', 10), 1],
     ['Bell', 'Kylie', '1314888@student.hcmus.edu.vn', '0800-754-524', bcrypt.hashSync('1512517', 10), 1],
     ['Hughes', 'Clifton', '1415143@student.hcmus.edu.vn', '1-877-253-52', bcrypt.hashSync('1512517', 10), 1],
+];
+var insert_users6=[  
     ['Hughes', 'Jesus', '1315238@student.hcmus.edu.vn', '1-844-892-12', bcrypt.hashSync('1512517', 10), 1],
     ['Cooper', 'Michael', '1414140@student.hcmus.edu.vn', '1-800-965-56', bcrypt.hashSync('1512517', 10), 1],
     ['Jones', 'Kaitlyn', '1415811@student.hcmus.edu.vn', '0800-211-064', bcrypt.hashSync('1512517', 10), 1],
@@ -946,6 +948,8 @@ var insert_users2 = [
     ['Evans', 'Travis', '1615774@student.hcmus.edu.vn', '0800-293-949', bcrypt.hashSync('1512517', 10), 1],
     ['King', 'Gianna', '1411726@student.hcmus.edu.vn', '0800-555-324', bcrypt.hashSync('1512517', 10), 1],
     ['Walker', 'Ruben', '1411197@student.hcmus.edu.vn', '1-844-047-58', bcrypt.hashSync('1512517', 10), 1],
+];
+var insert_users7=[
     ['Lewis', 'Alex', '1514843@student.hcmus.edu.vn', '0800-664-433', bcrypt.hashSync('1512517', 10), 1],
     ['Torres', 'Barry', '1411719@student.hcmus.edu.vn', '1-844-111-03', bcrypt.hashSync('1512517', 10), 1],
     ['Brooks', 'Violet', '1413224@student.hcmus.edu.vn', '0800-565-201', bcrypt.hashSync('1512517', 10), 1],
@@ -1443,6 +1447,8 @@ var insert_users3 = [
     ['Brooks', 'Kenneth', '1414587@student.hcmus.edu.vn', '0800-752-698', bcrypt.hashSync('1512517', 10), 1],
     ['Jackson', 'Todd', '1315161@student.hcmus.edu.vn', '0800-711-904', bcrypt.hashSync('1512517', 10), 1],
     ['Rogers', 'Mario', '1511750@student.hcmus.edu.vn', '1-855-415-63', bcrypt.hashSync('1512517', 10), 1],
+];
+var insert_users8=[
     ['Gray', 'Paisley', '1511243@student.hcmus.edu.vn', '1-855-982-92', bcrypt.hashSync('1512517', 10), 1],
     ['Powell', 'Stanley', '1614778@student.hcmus.edu.vn', '0800-567-226', bcrypt.hashSync('1512517', 10), 1],
     ['Anderson', 'Avery', '1513108@student.hcmus.edu.vn', '1-877-640-37', bcrypt.hashSync('1512517', 10), 1],
@@ -1951,6 +1957,8 @@ var insert_users4 = [
     ['Bell', 'Ronnie', '1614756@student.hcmus.edu.vn', '0800-320-720', bcrypt.hashSync('1512517', 10), 1],
     ['Baker', 'Gilbert', '1311468@student.hcmus.edu.vn', '1-866-798-94', bcrypt.hashSync('1512517', 10), 1],
     ['Morgan', 'Ken', '1612654@student.hcmus.edu.vn', '1-877-124-23', bcrypt.hashSync('1512517', 10), 1],
+];
+var insert_users9=[
     ['Young', 'Clinton', '1612143@student.hcmus.edu.vn', '0800-674-797', bcrypt.hashSync('1512517', 10), 1],
     ['Robinson', 'Ellie', '1611411@student.hcmus.edu.vn', '0800-752-237', bcrypt.hashSync('1512517', 10), 1],
     ['Kelly', 'Everett', '1514654@student.hcmus.edu.vn', '0800-673-225', bcrypt.hashSync('1512517', 10), 1],
@@ -3294,6 +3302,42 @@ var seeding_postgres = function (res) {
             },
             function (callback) {
                 connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users5), function (error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    } else {
+                        callback();
+                    }
+                });
+            },
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users6), function (error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    } else {
+                        callback();
+                    }
+                });
+            },
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users7), function (error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    } else {
+                        callback();
+                    }
+                });
+            },
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users8), function (error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    } else {
+                        callback();
+                    }
+                });
+            },
+            function (callback) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users9), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
