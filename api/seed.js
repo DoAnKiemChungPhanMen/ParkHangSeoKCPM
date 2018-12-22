@@ -65,43 +65,58 @@ var insert_classes = [
 ];
 //[code, name, semester_id, program_id, office_hour, note]
 var insert_courses = [
-    ['CS162', 'Introduction to Computer Science II', '4', '3', null, null], //1
-    ['MTH252', 'Calculus II', '4', '3', null, null], //2
-    ['PH212', 'General Physics II', '4', '3', 'T3 (14-16h) B38', null], //3
-    ['CTH001', 'Fundamental principles of  Marxism and Leninism', '4', '3', null, 'Bắt đầu từ tuần 16/1'], //4
-    ['TC001', 'Physical Education', '4', '3', null, null], //5
-    ['WR227', 'Technical Writing', '4', '3', 'T7 (8h30-11h30)', 'HT2'], //6
-    ['STAT451', 'Applied Statistics for Engineers and Scientists I', '4', '3', null, null], //7
-    ['CS251', 'Logical Structures', '4', '3', null, null], //8
-    ['CTH003', "Ho Chi Minh's Ideology", '4', '3', null, null], //9
-    ['ECE341', 'Computer Hardware', '4', '3', null, 'Tuần 9/1 học chiều T2 thay vì T3'], //10
-    ['CS322', 'Languages and Compiler Design II', '4', '3', null, null], //11
-    ['CS333', 'Introduction to Operating Systems', '4', '3', null, null], //12
-    ['CS350', 'Introduction to Computer Science II', '4', '3', null, null], //13
-    ['CS411', 'Computer Graphics', '4', '3', null, 'Sau tết học lại từ tuần 20/2'], //14
-    ['CS419', 'Introduction to Information Retrieval', '4', '3', null, null], //15
-    ['CS422', 'Software analysis and design', '4', '3', null, 'HT2'], //16
-    ['CS407', 'Technology Innovation and Leadership', '4', '3', 'T6 (8h30-9h30) JVN', null], //17
-    ['CS423', 'Software Testing', '4', '3', null, 'HT2'], //18
-    ['CS488', 'Software Engineering Capstone II', '4', '3', null, null], //19
-
-    ['CTT008', 'Kỹ thuật lập trình', '4', '1', null, null], //20
-    ['CTT010', 'Nhập môn CNTT 2', '4', '1', null, 'HT2'], //21
-    ['TTH026', 'Giải tích B1', '4', '1', null, null], //22
-    ['KTH001', 'Kinh tế đại cương', '4', '1', null, null], //23
-    ['CTT103', 'Hệ điều hành', '4', '1', null, 'HT2'], //24
-    ['CTT105', 'Mạng máy tính', '4', '1', null, null], //25
-    ['TTH043', 'Xác suất thống kê', '4', '1', null, null], //26
-    ['CTH003', 'Tư tưởng Hồ Chí Minh', '4', '1', null, null], //27
-    ['CTH001', 'Những nguyên lý cơ bản của CN Mác-Lênin', '4', '1', null, 'Bắt đầu từ 16/1'], //28
-    ['JAP001', 'Tiếng Nhật', '4', '1', null, null], //29
-    ['CTT204', 'Phân tích thiết kế hệ thống thông tin', '4', '1', null, 'HT2'], //30
-    ['CTT504', 'Phân tích thiết kế phần mềm', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //31
-    ['CTT528', 'Phát triển ứng dụng web', '4', '1', null, 'HT2, Bắt đầu lúc 13h-16h30'], //32
-    ['CTT503', 'Kiểm chứng phần mềm', '4', '1', null, 'HT2'], //33
-    ['CTT125', 'Khởi nghiệp', '4', '1', null, null], //34
-    ['PLD001', 'Pháp luật đại cương', '4', '1', null, null], //35
+    ['DEO251', 'Computational Biology and Chemistry', 4, 2, null, null],
+    ['BXD572', 'Advances in Engineering Software', 4, 1, null, null],
+    ['RPY307', 'Computers and Biomedical Research', 4, 1, null, null],
+    ['VKLW825', 'Computer Languages', 4, 3, null, 'Sed ut perspiciatis'],
+    ['BVX636', 'Computer Standards & Interfaces', 4, 3, null, null],
+    ['DIPX607', 'Computer Aided Geometric Design', 4, 5, null, null],
+    ['GUK125', 'Computational Geometry', 4, 5, null, null],
+    ['HGV739', 'Computer Vision, Graphics, and Image Processing', 4, 2, null, null],
+    ['CFG527', 'Computer Compacts', 4, 1, null, 'Sed ut perspiciatis'],
+    ['SPI115', 'Applied Soft Computing', 4, 3, null, null],
+    ['TDJXY828', 'Cognitive Systems Research', 4, 4, null, null],
+    ['DTAPU640', 'Artificial Intelligence', 4, 2, null, null],
+    ['TTYJ773', 'Computer Networks', 4, 4, null, null],
+    ['YFO817', 'Biometric Technology Today', 4, 5, null, null],
+    ['VFGP382', 'Artificial Intelligence in Medicine', 4, 5, null, 'Sed ut perspiciatis'],
+    ['MWU251', 'Computer Networks (1976],', 4, 2, null, null],
+    ['UPWF117', 'Computer Methods in Applied Mechanics and Engineering', 4, 3, null, null],
+    ['NGU771', 'Advanced Engineering Informatics', 4, 5, null, 'Sed ut perspiciatis'],
+    ['LJF488', 'Computer Programs in Biomedicine', 4, 5, null, 'Sed ut perspiciatis'],
+    ['ISCGD902', 'Computer Speech & Language', 4, 1, null, null],
+    ['SYSCA372', 'Computer Law & Security Report', 4, 2, null, null],
+    ['CKOHH125', 'Computers & Chemistry', 4, 1, null, null],
+    ['BBVTH758', 'Computer Methods and Programs in Biomedicine', 4, 1, null, null],
+    ['KFLID866', 'Computational Statistics & Data Analysis', 4, 1, null, null],
+    ['XWBV912', 'Computer Vision and Image Understanding', 4, 3, null, null],
+    ['ILJX823', 'Computers and Standards', 4, 2, null, null],
+    ['XYARK043', 'Artificial Intelligence in Engineering', 4, 2, null, null],
+    ['POTYY911', 'Computer Physics Reports', 4, 4, null, null],
+    ['OKU795', 'Computer Communications', 4, 3, null, 'Sed ut perspiciatis'],
+    ['ZMX660', 'Computers & Urban Society', 4, 4, null, null],
+    ['LBX450', 'Computers & Security', 4, 5, null, 'Sed ut perspiciatis'],
+    ['MUQ436', 'Computers & Structures', 4, 4, null, 'Sed ut perspiciatis'],
+    ['HTX111', 'Computer Languages, Systems & Structures', 4, 5, null, null],
+    ['EKIEU541', 'Computerized Medical Imaging and Graphics', 4, 3, null, null],
+    ['ITSYH813', 'Computer Networks and ISDN Systems', 4, 5, null, null],
+    ['QHWQB333', 'Computer Fraud & Security', 4, 4, null, null],
+    ['GKPT667', 'Ad Hoc Networks', 4, 2, null, null],
+    ['PUM854', 'Computer Fraud & Security Bulletin', 4, 4, null, null],
+    ['FOPI085', 'Computers in Biology and Medicine', 4, 2, null, null],
+    ['OMWT331', 'Computers & Geosciences', 4, 1, null, null],
+    ['TDO667', 'Computer Physics Communications', 4, 1, null, null],
+    ['IVR855', 'AEU - International Journal of Electronics and Communications', 4, 4, null, null],
+    ['XKNKO437', 'Computers and Geotechnics', 4, 5, null, 'Sed ut perspiciatis'],
+    ['DJRQ310', 'Computer-Aided Design', 4, 4, null, null],
+    ['RSR044', 'Cognitive Science', 4, 4, null, null],
+    ['LFS755', 'Computers and Electronics in Agriculture', 4, 1, null, null],
+    ['KUS664', 'Computer Graphics and Image Processing', 4, 3, null, null],
+    ['BOC224', 'Card Technology Today', 4, 2, null, null],
+    ['WMD836', 'Computers & Graphics', 4, 3, null, null],
+    ['IXFM718', 'Computer Audit Update', 4, 3, null, null],
 ];
+
 //[class_id,course_id,schedules]
 var insert_class_has_course = [
     ['1', '1', '4-I44-LT;8-I41-LT;14-I11C-TH;15-I11C-TH;22-I44-LT'], //1
