@@ -582,10 +582,12 @@ var seeding_admin = function (res) {
 }
 router.get('/', function (req, res, next) {
     //seeding_mysql(res);
-    seeding_postgres(res);
+    // seeding_postgres(res);
+    res.send('Đã thực hiện rồi');
 });
 router.get('/admin', function (req, res, next) {
     //seeding_mysql(res);
-    seeding_admin(res);
+    // seeding_admin(res);
+    res.send('Đã thực hiện rồi');
 });
 module.exports = router;
