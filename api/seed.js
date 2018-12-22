@@ -10,499 +10,612 @@ var pg = require('pg');
 var format = require('pg-format');
 const pool_postgres = new pg.Pool(_global.db_postgres);
 
-//[name]
-var insert_roles = [
-    ['Student'],
-    ['Teacher'],
-    ['Staff'],
-    ['Admin']
+var insert_users1 = [
+    ['Torres', 'Victoria', '1611722@student.hcmus.edu.vn', '0800-357-704', bcrypt.hashSync('1512517', 10), 1],
+    ['Brooks', 'Clara', '1512143@student.hcmus.edu.vn', '1-855-324-42', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Sydney', '1311565@student.hcmus.edu.vn', '0800-656-445', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Marion', '1515485@student.hcmus.edu.vn', '1-800-724-56', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Matthew', '1611668@student.hcmus.edu.vn', '0800-638-213', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Bobby', '1315378@student.hcmus.edu.vn', '0800-155-843', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Arthur', '1311741@student.hcmus.edu.vn', '1-800-144-60', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Paisley', '1413601@student.hcmus.edu.vn', '1-877-598-88', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Gene', '1511722@student.hcmus.edu.vn', '1-866-697-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Everett', '1411820@student.hcmus.edu.vn', '0800-987-646', bcrypt.hashSync('1512517', 10), 1],
+    ['Hill', 'Gianna', '1515615@student.hcmus.edu.vn', '0800-695-488', bcrypt.hashSync('1512517', 10), 1],
+    ['Butler', 'Johnnie', '1612227@student.hcmus.edu.vn', '1-888-790-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Leo', '1614224@student.hcmus.edu.vn', '1-855-495-55', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Barry', '1411988@student.hcmus.edu.vn', '1-888-527-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Ronnie', '1511615@student.hcmus.edu.vn', '0800-774-105', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Kenneth', '1511751@student.hcmus.edu.vn', '0800-340-634', bcrypt.hashSync('1512517', 10), 1],
+    ['Gomez', 'Allan', '1315534@student.hcmus.edu.vn', '1-844-684-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Todd', '1615281@student.hcmus.edu.vn', '1-855-221-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Lopez', 'Grace', '1314467@student.hcmus.edu.vn', '0800-478-564', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Franklin', '1411617@student.hcmus.edu.vn', '1-866-215-66', bcrypt.hashSync('1512517', 10), 1],
+    ['Martin', 'Jerry', '1513756@student.hcmus.edu.vn', '0800-151-744', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Stella', '1511756@student.hcmus.edu.vn', '1-866-155-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Phillip', '1612243@student.hcmus.edu.vn', '1-877-786-45', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Roberto', '1312806@student.hcmus.edu.vn', '1-844-766-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Andy', '1314839@student.hcmus.edu.vn', '1-844-609-13', bcrypt.hashSync('1512517', 10), 1],
+    ['Martinez', 'Charlotte', '1612281@student.hcmus.edu.vn', '1-844-516-48', bcrypt.hashSync('1512517', 10), 1],
+    ['Gonzalez', 'Ellie', '1312227@student.hcmus.edu.vn', '1-888-131-89', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Kirk', '1412682@student.hcmus.edu.vn', '0800-191-688', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Hailey', '1314343@student.hcmus.edu.vn', '1-855-807-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Nelson', '1511402@student.hcmus.edu.vn', '1-866-780-58', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Alexander', '1313651@student.hcmus.edu.vn', '0800-285-473', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Lila', '1612086@student.hcmus.edu.vn', '0800-666-318', bcrypt.hashSync('1512517', 10), 1],
+    ['Powell', 'Arianna', '1515485@student.hcmus.edu.vn', '0800-466-594', bcrypt.hashSync('1512517', 10), 1],
+    ['Morales', 'Kaitlyn', '1611733@student.hcmus.edu.vn', '1-844-911-84', bcrypt.hashSync('1512517', 10), 1],
+    ['Edwards', 'Marvin', '1514732@student.hcmus.edu.vn', '0800-442-398', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanders', 'Sydney', '1515565@student.hcmus.edu.vn', '1-855-715-84', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Edward', '1415435@student.hcmus.edu.vn', '1-877-342-43', bcrypt.hashSync('1512517', 10), 1],
+    ['Price', 'Keith', '1413485@student.hcmus.edu.vn', '0800-614-324', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Cory', '1313435@student.hcmus.edu.vn', '0800-187-467', bcrypt.hashSync('1512517', 10), 1],
+    ['Garcia', 'Jose', '1413750@student.hcmus.edu.vn', '1-888-597-94', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Kenneth', '1311851@student.hcmus.edu.vn', '1-844-191-11', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Charlie', '1414108@student.hcmus.edu.vn', '1-855-641-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Perez', 'Marion', '1411811@student.hcmus.edu.vn', '0800-488-719', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Robert', '1613318@student.hcmus.edu.vn', '1-877-611-17', bcrypt.hashSync('1512517', 10), 1],
+    ['Cox', 'Makayla', '1615587@student.hcmus.edu.vn', '1-844-617-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Brown', 'Darrell', '1313367@student.hcmus.edu.vn', '0800-104-725', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Lila', '1411289@student.hcmus.edu.vn', '0800-112-768', bcrypt.hashSync('1512517', 10), 1],
+    ['Gomez', 'Roberto', '1614615@student.hcmus.edu.vn', '0800-568-000', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Kylie', '1415754@student.hcmus.edu.vn', '1-866-283-29', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Angel', '1614318@student.hcmus.edu.vn', '1-866-554-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Cook', 'Lance', '1415855@student.hcmus.edu.vn', '0800-124-719', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Edward', '1412820@student.hcmus.edu.vn', '0800-154-485', bcrypt.hashSync('1512517', 10), 1],
+    ['Watson', 'Arthur', '1412733@student.hcmus.edu.vn', '0800-814-857', bcrypt.hashSync('1512517', 10), 1],
+    ['Campbell', 'Terrence', '1614719@student.hcmus.edu.vn', '1-877-092-25', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Jesse', '1412238@student.hcmus.edu.vn', '0800-229-276', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Dustin', '1311839@student.hcmus.edu.vn', '1-855-193-36', bcrypt.hashSync('1512517', 10), 1],
+    ['Harris', 'Jaime', '1614086@student.hcmus.edu.vn', '0800-568-318', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Bruce', '1613243@student.hcmus.edu.vn', '1-844-649-11', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Zoe', '1611719@student.hcmus.edu.vn', '0800-847-622', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Clifton', '1311224@student.hcmus.edu.vn', '0800-361-413', bcrypt.hashSync('1512517', 10), 1],
+    ['Gomez', 'Nelson', '1615851@student.hcmus.edu.vn', '1-800-061-57', bcrypt.hashSync('1512517', 10), 1],
+    ['Walker', 'Francisco', '1613646@student.hcmus.edu.vn', '1-877-330-05', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Camilla', '1313556@student.hcmus.edu.vn', '0800-242-731', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Armando', '1615338@student.hcmus.edu.vn', '1-877-311-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Ruben', '1413858@student.hcmus.edu.vn', '0800-178-834', bcrypt.hashSync('1512517', 10), 1],
+    ['Bennett', 'Ken', '1615888@student.hcmus.edu.vn', '1-844-878-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Matthew', '1314035@student.hcmus.edu.vn', '1-866-514-20', bcrypt.hashSync('1512517', 10), 1],
+    ['Garcia', 'Ronnie', '1414615@student.hcmus.edu.vn', '1-800-783-88', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Angel', '1611267@student.hcmus.edu.vn', '0800-156-047', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Angel', '1313535@student.hcmus.edu.vn', '0800-724-133', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Lauren', '1615587@student.hcmus.edu.vn', '1-888-398-86', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Brett', '1511682@student.hcmus.edu.vn', '0800-078-724', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Charlotte', '1612774@student.hcmus.edu.vn', '1-844-480-07', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Mackenzie', '1411853@student.hcmus.edu.vn', '0800-231-490', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Nelson', '1313975@student.hcmus.edu.vn', '0800-466-222', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Clifton', '1313778@student.hcmus.edu.vn', '0800-934-709', bcrypt.hashSync('1512517', 10), 1],
+    ['Brown', 'Christopher', '1615263@student.hcmus.edu.vn', '0800-535-625', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Herman', '1413851@student.hcmus.edu.vn', '1-844-378-44', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Victor', '1611879@student.hcmus.edu.vn', '1-877-315-15', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Jerome', '1314756@student.hcmus.edu.vn', '0800-925-634', bcrypt.hashSync('1512517', 10), 1],
+    ['White', 'Travis', '1315267@student.hcmus.edu.vn', '0800-672-812', bcrypt.hashSync('1512517', 10), 1],
+    ['Rogers', 'Robert', '1612879@student.hcmus.edu.vn', '1-866-168-65', bcrypt.hashSync('1512517', 10), 1],
+    ['Carter', 'Henry', '1412722@student.hcmus.edu.vn', '0800-355-346', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Benjamin', '1313861@student.hcmus.edu.vn', '0800-684-350', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Claude', '1412140@student.hcmus.edu.vn', '0800-732-518', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Kevin', '1413722@student.hcmus.edu.vn', '1-866-864-38', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Jorge', '1315402@student.hcmus.edu.vn', '0800-591-140', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Marvin', '1411221@student.hcmus.edu.vn', '1-877-858-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Michael', '1615636@student.hcmus.edu.vn', '0800-839-897', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Larry', '1612822@student.hcmus.edu.vn', '1-855-716-87', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Emily', '1514221@student.hcmus.edu.vn', '1-877-835-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Gordon', '1511116@student.hcmus.edu.vn', '1-800-721-50', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Natalie', '1511253@student.hcmus.edu.vn', '1-855-866-17', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Gene', '1313756@student.hcmus.edu.vn', '1-877-478-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Davis', 'Stella', '1415732@student.hcmus.edu.vn', '0800-951-696', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Raul', '1511556@student.hcmus.edu.vn', '0800-819-021', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Ernest', '1512646@student.hcmus.edu.vn', '0800-291-687', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Joel', '1311229@student.hcmus.edu.vn', '0800-356-043', bcrypt.hashSync('1512517', 10), 1],
+    ['Lee', 'Ben', '1413811@student.hcmus.edu.vn', '0800-853-323', bcrypt.hashSync('1512517', 10), 1],
+    ['Anderson', 'Bradley', '1514402@student.hcmus.edu.vn', '1-866-658-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Bob', '1515886@student.hcmus.edu.vn', '0800-206-583', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Keira', '1513224@student.hcmus.edu.vn', '0800-543-248', bcrypt.hashSync('1512517', 10), 1],
+    ['Lee', 'Juan', '1412617@student.hcmus.edu.vn', '0800-739-735', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Herman', '1612811@student.hcmus.edu.vn', '0800-175-377', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Clinton', '1314118@student.hcmus.edu.vn', '0800-505-378', bcrypt.hashSync('1512517', 10), 1],
+    ['Edwards', 'Gilbert', '1614035@student.hcmus.edu.vn', '0800-522-218', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Gene', '1615601@student.hcmus.edu.vn', '1-844-146-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Price', 'Joseph', '1413116@student.hcmus.edu.vn', '1-844-356-18', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Ernest', '1314338@student.hcmus.edu.vn', '1-844-634-54', bcrypt.hashSync('1512517', 10), 1],
+    ['White', 'Mario', '1312654@student.hcmus.edu.vn', '1-855-644-47', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Marion', '1515853@student.hcmus.edu.vn', '0800-707-392', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Allan', '1414806@student.hcmus.edu.vn', '0800-138-623', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Clifton', '1313668@student.hcmus.edu.vn', '0800-471-118', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Jesus', '1315446@student.hcmus.edu.vn', '1-844-525-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Hernandez', 'Salvador', '1314852@student.hcmus.edu.vn', '0800-541-626', bcrypt.hashSync('1512517', 10), 1],
+    ['White', 'Benjamin', '1515839@student.hcmus.edu.vn', '1-855-984-70', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Maya', '1411534@student.hcmus.edu.vn', '0800-364-358', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Makayla', '1614851@student.hcmus.edu.vn', '0800-412-394', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Erik', '1315756@student.hcmus.edu.vn', '1-877-531-42', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Ruben', '1415614@student.hcmus.edu.vn', '1-800-115-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Brown', 'Bruce', '1411402@student.hcmus.edu.vn', '1-844-981-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Avery', '1514601@student.hcmus.edu.vn', '0800-468-805', bcrypt.hashSync('1512517', 10), 1],
+    ['White', 'Hailey', '1512839@student.hcmus.edu.vn', '0800-874-347', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Rodney', '1611839@student.hcmus.edu.vn', '0800-734-828', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Stella', '1613855@student.hcmus.edu.vn', '0800-368-774', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Leon', '1314435@student.hcmus.edu.vn', '0800-862-771', bcrypt.hashSync('1512517', 10), 1],
+    ['Powell', 'Maya', '1612636@student.hcmus.edu.vn', '1-855-516-74', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Aaron', '1315726@student.hcmus.edu.vn', '1-888-194-06', bcrypt.hashSync('1512517', 10), 1],
+    ['Wood', 'Darrell', '1612668@student.hcmus.edu.vn', '1-855-753-24', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Jason', '1315118@student.hcmus.edu.vn', '1-844-316-06', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Erik', '1511042@student.hcmus.edu.vn', '0800-387-654', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Charlotte', '1513774@student.hcmus.edu.vn', '0800-048-872', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Victor', '1315975@student.hcmus.edu.vn', '1-888-086-36', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Michael', '1512733@student.hcmus.edu.vn', '0800-674-288', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Julia', '1415534@student.hcmus.edu.vn', '0800-645-923', bcrypt.hashSync('1512517', 10), 1],
+    ['Garcia', 'Isabelle', '1413843@student.hcmus.edu.vn', '0800-641-174', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Armando', '1313682@student.hcmus.edu.vn', '0800-074-323', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Aaron', '1512822@student.hcmus.edu.vn', '0800-785-441', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Charlotte', '1413756@student.hcmus.edu.vn', '1-866-505-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Terrance', '1615467@student.hcmus.edu.vn', '0800-447-588', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Roland', '1514955@student.hcmus.edu.vn', '1-855-195-52', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Ernest', '1512221@student.hcmus.edu.vn', '0800-374-872', bcrypt.hashSync('1512517', 10), 1],
+    ['Lopez', 'Erik', '1614158@student.hcmus.edu.vn', '0800-721-074', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Barry', '1312289@student.hcmus.edu.vn', '0800-912-795', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Ella', '1414754@student.hcmus.edu.vn', '1-866-115-35', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Juan', '1612485@student.hcmus.edu.vn', '0800-163-655', bcrypt.hashSync('1512517', 10), 1],
+    ['Diaz', 'Stella', '1415630@student.hcmus.edu.vn', '1-877-735-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Lonnie', '1311367@student.hcmus.edu.vn', '1-855-725-62', bcrypt.hashSync('1512517', 10), 1],
+    ['Cook', 'Julian', '1515751@student.hcmus.edu.vn', '1-877-390-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Sullivan', 'Nora', '1613852@student.hcmus.edu.vn', '1-866-370-41', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Robert', '1515601@student.hcmus.edu.vn', '1-844-437-21', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Kenneth', '1314267@student.hcmus.edu.vn', '1-855-857-58', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Ruben', '1312450@student.hcmus.edu.vn', '1-844-701-95', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Lila', '1613719@student.hcmus.edu.vn', '0800-122-186', bcrypt.hashSync('1512517', 10), 1],
+    ['Parker', 'Tim', '1414485@student.hcmus.edu.vn', '0800-831-114', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Ian', '1613733@student.hcmus.edu.vn', '1-877-254-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Max', '1313879@student.hcmus.edu.vn', '0800-038-594', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Maya', '1411157@student.hcmus.edu.vn', '0800-889-293', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Alex', '1411281@student.hcmus.edu.vn', '1-877-920-87', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Aria', '1311615@student.hcmus.edu.vn', '1-855-101-67', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Matthew', '1614754@student.hcmus.edu.vn', '1-844-448-43', bcrypt.hashSync('1512517', 10), 1],
+    ['Perez', 'Ryan', '1612263@student.hcmus.edu.vn', '1-877-473-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Martinez', 'Gordon', '1613289@student.hcmus.edu.vn', '0800-866-744', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Sam', '1314556@student.hcmus.edu.vn', '0800-983-939', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Emily', '1614143@student.hcmus.edu.vn', '1-877-139-40', bcrypt.hashSync('1512517', 10), 1],
+    ['Myers', 'Salvador', '1615450@student.hcmus.edu.vn', '1-855-236-60', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Kylie', '1314888@student.hcmus.edu.vn', '0800-754-524', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Clifton', '1415143@student.hcmus.edu.vn', '1-877-253-52', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Jesus', '1315238@student.hcmus.edu.vn', '1-844-892-12', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Michael', '1414140@student.hcmus.edu.vn', '1-800-965-56', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Kaitlyn', '1415811@student.hcmus.edu.vn', '0800-211-064', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Edward', '1312617@student.hcmus.edu.vn', '1-866-185-12', bcrypt.hashSync('1512517', 10), 1],
+    ['Stewart', 'Brett', '1313411@student.hcmus.edu.vn', '0800-368-583', bcrypt.hashSync('1512517', 10), 1],
+    ['Moore', 'Camilla', '1313806@student.hcmus.edu.vn', '0800-760-263', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Leon', '1312601@student.hcmus.edu.vn', '0800-681-850', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Edward', '1515858@student.hcmus.edu.vn', '1-866-017-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Rodney', '1611855@student.hcmus.edu.vn', '0800-844-767', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Scarlett', '1513682@student.hcmus.edu.vn', '0800-525-871', bcrypt.hashSync('1512517', 10), 1],
+    ['Anderson', 'Mackenzie', '1613888@student.hcmus.edu.vn', '1-877-935-84', bcrypt.hashSync('1512517', 10), 1],
+    ['Smith', 'Raul', '1614732@student.hcmus.edu.vn', '0800-552-580', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Aaron', '1313197@student.hcmus.edu.vn', '0800-647-359', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Mario', '1611534@student.hcmus.edu.vn', '0800-573-402', bcrypt.hashSync('1512517', 10), 1],
+    ['Watson', 'Cory', '1611858@student.hcmus.edu.vn', '0800-470-798', bcrypt.hashSync('1512517', 10), 1],
+    ['Brooks', 'Philip', '1414717@student.hcmus.edu.vn', '1-866-297-35', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Jacob', '1311112@student.hcmus.edu.vn', '0800-806-787', bcrypt.hashSync('1512517', 10), 1],
+    ['Cook', 'Kevin', '1613975@student.hcmus.edu.vn', '0800-112-566', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Perry', '1412294@student.hcmus.edu.vn', '0800-979-251', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Brooklyn', '1311343@student.hcmus.edu.vn', '0800-365-254', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Kevin', '1415229@student.hcmus.edu.vn', '0800-757-270', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanders', 'Arthur', '1313485@student.hcmus.edu.vn', '0800-716-829', bcrypt.hashSync('1512517', 10), 1],
+    ['Peterson', 'Kirk', '1413636@student.hcmus.edu.vn', '1-877-736-32', bcrypt.hashSync('1512517', 10), 1],
+    ['Peterson', 'Alexander', '1314197@student.hcmus.edu.vn', '0800-286-422', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Arthur', '1512668@student.hcmus.edu.vn', '0800-331-327', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Grace', '1615118@student.hcmus.edu.vn', '1-866-513-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Tim', '1315853@student.hcmus.edu.vn', '1-866-521-68', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Wayne', '1611224@student.hcmus.edu.vn', '0800-835-799', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Leo', '1512112@student.hcmus.edu.vn', '1-877-238-90', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Mitchell', '1412263@student.hcmus.edu.vn', '1-855-454-74', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Adalyn', '1511855@student.hcmus.edu.vn', '1-855-173-43', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Fernando', '1312722@student.hcmus.edu.vn', '1-855-421-54', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Ella', '1413441@student.hcmus.edu.vn', '1-844-553-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Jorge', '1312238@student.hcmus.edu.vn', '1-855-480-00', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Ronnie', '1512861@student.hcmus.edu.vn', '1-888-523-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Butler', 'Dustin', '1612446@student.hcmus.edu.vn', '1-855-537-85', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Larry', '1415343@student.hcmus.edu.vn', '1-800-812-68', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Casey', '1412754@student.hcmus.edu.vn', '1-855-270-92', bcrypt.hashSync('1512517', 10), 1],
+    ['Wood', 'Ryan', '1315435@student.hcmus.edu.vn', '0800-563-445', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Arianna', '1515318@student.hcmus.edu.vn', '0800-545-784', bcrypt.hashSync('1512517', 10), 1],
+    ['Baker', 'Claude', '1512855@student.hcmus.edu.vn', '0800-412-652', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Matthew', '1511717@student.hcmus.edu.vn', '0800-767-922', bcrypt.hashSync('1512517', 10), 1],
+    ['Wood', 'Raul', '1411839@student.hcmus.edu.vn', '1-866-621-06', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanders', 'Claire', '1311485@student.hcmus.edu.vn', '1-888-646-55', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Perry', '1311822@student.hcmus.edu.vn', '0800-477-861', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Christopher', '1515820@student.hcmus.edu.vn', '1-877-581-87', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Arianna', '1612186@student.hcmus.edu.vn', '1-888-521-35', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Kirk', '1514719@student.hcmus.edu.vn', '1-866-496-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Morales', 'Edward', '1511221@student.hcmus.edu.vn', '0800-040-127', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Mario', '1612847@student.hcmus.edu.vn', '0800-346-111', bcrypt.hashSync('1512517', 10), 1],
+    ['Gray', 'Alex', '1312186@student.hcmus.edu.vn', '1-844-958-62', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Zoe', '1515253@student.hcmus.edu.vn', '1-800-657-82', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Adalyn', '1312682@student.hcmus.edu.vn', '1-888-867-37', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Peter', '1314452@student.hcmus.edu.vn', '0800-355-045', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Zoe', '1615565@student.hcmus.edu.vn', '1-855-728-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Darrell', '1512988@student.hcmus.edu.vn', '0800-458-438', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Cory', '1312988@student.hcmus.edu.vn', '0800-223-153', bcrypt.hashSync('1512517', 10), 1],
+    ['Lopez', 'Terrance', '1611452@student.hcmus.edu.vn', '0800-287-612', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Angel', '1412843@student.hcmus.edu.vn', '0800-846-765', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Johnnie', '1415636@student.hcmus.edu.vn', '0800-588-858', bcrypt.hashSync('1512517', 10), 1],
+    ['White', 'Herman', '1611109@student.hcmus.edu.vn', '1-800-828-63', bcrypt.hashSync('1512517', 10), 1],
+    ['Ward', 'Terrence', '1412565@student.hcmus.edu.vn', '1-877-622-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Brooks', 'Kirk', '1512843@student.hcmus.edu.vn', '0800-475-575', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Clinton', '1414820@student.hcmus.edu.vn', '0800-446-188', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Joel', '1515617@student.hcmus.edu.vn', '0800-473-725', bcrypt.hashSync('1512517', 10), 1],
+    ['Powell', 'Kirk', '1314733@student.hcmus.edu.vn', '0800-175-772', bcrypt.hashSync('1512517', 10), 1],
+    ['Ward', 'Julia', '1412750@student.hcmus.edu.vn', '0800-872-875', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Phillip', '1412143@student.hcmus.edu.vn', '0800-368-442', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Camilla', '1614267@student.hcmus.edu.vn', '1-855-355-79', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Gabriel', '1314109@student.hcmus.edu.vn', '0800-112-144', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Bradley', '1315467@student.hcmus.edu.vn', '0800-404-748', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Bradley', '1613630@student.hcmus.edu.vn', '0800-439-774', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Savannah', '1415485@student.hcmus.edu.vn', '1-855-623-48', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Allison', '1412243@student.hcmus.edu.vn', '1-855-173-43', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Franklin', '1513741@student.hcmus.edu.vn', '1-866-218-07', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Hannah', '1415289@student.hcmus.edu.vn', '0800-550-814', bcrypt.hashSync('1512517', 10), 1],
+    ['Hill', 'Sam', '1311717@student.hcmus.edu.vn', '1-866-147-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Lawrence', '1311719@student.hcmus.edu.vn', '1-844-318-95', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Andy', '1613614@student.hcmus.edu.vn', '1-855-692-95', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Clifton', '1511888@student.hcmus.edu.vn', '1-855-288-60', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Mark', '1514855@student.hcmus.edu.vn', '1-855-257-19', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Allan', '1613535@student.hcmus.edu.vn', '1-844-796-93', bcrypt.hashSync('1512517', 10), 1],
+    ['Campbell', 'Mark', '1312243@student.hcmus.edu.vn', '0800-465-320', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Travis', '1511263@student.hcmus.edu.vn', '0800-432-871', bcrypt.hashSync('1512517', 10), 1],
+    ['Baker', 'Paisley', '1613140@student.hcmus.edu.vn', '1-855-168-14', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Javier', '1511651@student.hcmus.edu.vn', '0800-381-368', bcrypt.hashSync('1512517', 10), 1],
+    ['Stewart', 'Grace', '1515157@student.hcmus.edu.vn', '1-866-647-20', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Savannah', '1412732@student.hcmus.edu.vn', '0800-752-716', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Michael', '1611811@student.hcmus.edu.vn', '0800-386-525', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Bradley', '1415858@student.hcmus.edu.vn', '1-855-650-01', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Manuel', '1413158@student.hcmus.edu.vn', '1-800-312-26', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Lonnie', '1311843@student.hcmus.edu.vn', '1-866-558-80', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Benjamin', '1315741@student.hcmus.edu.vn', '1-844-481-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Arthur', '1515726@student.hcmus.edu.vn', '0800-116-961', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Bobby', '1613224@student.hcmus.edu.vn', '0800-265-908', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Todd', '1514147@student.hcmus.edu.vn', '0800-177-510', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Charlotte', '1611847@student.hcmus.edu.vn', '1-877-822-44', bcrypt.hashSync('1512517', 10), 1],
+    ['Stewart', 'Keira', '1511338@student.hcmus.edu.vn', '0800-497-505', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Dan', '1414467@student.hcmus.edu.vn', '0800-508-173', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Darryl', '1414534@student.hcmus.edu.vn', '1-855-241-18', bcrypt.hashSync('1512517', 10), 1],
+    ['Peterson', 'Mitchell', '1613157@student.hcmus.edu.vn', '1-844-248-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Christopher', '1413143@student.hcmus.edu.vn', '1-888-762-68', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Avery', '1415646@student.hcmus.edu.vn', '1-866-178-89', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Armando', '1312847@student.hcmus.edu.vn', '0800-216-568', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Kylie', '1513035@student.hcmus.edu.vn', '1-800-586-11', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Dwayne', '1512411@student.hcmus.edu.vn', '0800-074-821', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Claire', '1612886@student.hcmus.edu.vn', '0800-736-520', bcrypt.hashSync('1512517', 10), 1],
+    ['Hill', 'Natalie', '1411490@student.hcmus.edu.vn', '1-844-226-74', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Johnnie', '1411338@student.hcmus.edu.vn', '1-877-182-22', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Lance', '1413975@student.hcmus.edu.vn', '0800-744-115', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Larry', '1511026@student.hcmus.edu.vn', '0800-828-911', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Clinton', '1513026@student.hcmus.edu.vn', '0800-347-893', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Dwayne', '1415879@student.hcmus.edu.vn', '1-844-363-32', bcrypt.hashSync('1512517', 10), 1],
+    ['Bennett', 'Nicholas', '1513617@student.hcmus.edu.vn', '0800-583-087', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Maya', '1311289@student.hcmus.edu.vn', '1-877-672-64', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Natalie', '1411636@student.hcmus.edu.vn', '0800-879-866', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Jacob', '1611289@student.hcmus.edu.vn', '0800-412-473', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Lawrence', '1414243@student.hcmus.edu.vn', '1-855-449-52', bcrypt.hashSync('1512517', 10), 1],
+    ['Bennett', 'Henry', '1412197@student.hcmus.edu.vn', '1-866-176-21', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Douglas', '1313717@student.hcmus.edu.vn', '1-855-713-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Jose', '1412402@student.hcmus.edu.vn', '0800-646-884', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Bobby', '1311238@student.hcmus.edu.vn', '1-888-235-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Travis', '1512565@student.hcmus.edu.vn', '1-866-803-46', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Jerome', '1415565@student.hcmus.edu.vn', '0800-148-244', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Clara', '1311820@student.hcmus.edu.vn', '1-888-275-34', bcrypt.hashSync('1512517', 10), 1],
+    ['Davis', 'Eric', '1512534@student.hcmus.edu.vn', '0800-125-034', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Kaitlyn', '1315806@student.hcmus.edu.vn', '0800-843-340', bcrypt.hashSync('1512517', 10), 1],
+    ['Gonzalez', 'Christopher', '1414853@student.hcmus.edu.vn', '1-866-428-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Cory', '1511741@student.hcmus.edu.vn', '1-855-717-25', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Herman', '1514435@student.hcmus.edu.vn', '0800-845-555', bcrypt.hashSync('1512517', 10), 1],
+    ['Cook', 'Ray', '1415467@student.hcmus.edu.vn', '1-800-386-64', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Wade', '1313886@student.hcmus.edu.vn', '1-844-470-27', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Lila', '1611140@student.hcmus.edu.vn', '0800-256-647', bcrypt.hashSync('1512517', 10), 1],
 ];
-//[name, start_date, end_date, vacation_time]
-var insert_semesters = [
-    ['HK1 2015-2016', '2015-10-1 00:00:00', '2015-12-23 00:00:00', '24/12/2015 - 5/1/2016'], //1
-    ['HK2 2015-2016', '2016-1-15 00:00:00', '2016-4-28 00:00:00', '30/4/2016 - 2/5/2016'],   //2
-    ['HK3 2015-2016', '2016-5-5 00:00:00', '2016-8-8 00:00:00', '16/8/2016 - 25/9/2016'],     //3
-    ['HK1 2016-2017', '2016-10-2 00:00:00', '2016-12-25 00:00:00', '24/12/2016 - 6/1/2017'],  //4
-    ['HK2 2016-2017', '2017-1-16 00:00:00', '2017-5-2 00:00:00', '30/4/2017 - 2/5/2017'],    //5
-    ['HK3 2016-2017', '2017-5-8 00:00:00', '2017-8-11 00:00:00', '16/8/2017 - 25/9/2017'],   //6
-    ['HK1 2017-2018', '2017-10-2 00:00:00', '2017-12-25 00:00:00', '24/12/2017 - 6/1/2017'],  //7
-    ['HK2 2017-2018', '2018-1-16 00:00:00', '2018-5-2 00:00:00', '30/4/2018 - 2/5/2018'],    //8
-    ['HK3 2017-2018', '2018-5-8 00:00:00', '2018-8-11 00:00:00', '16/8/2018 - 25/9/2018'],   //9
-    ['HK1 2018-2019', '2018-10-2 00:00:00', '2018-12-25 00:00:00', '24/12/2018 - 6/1/2018'],  //10
-    ['HK2 2018-2019', '2019-1-16 00:00:00', '2019-5-2 00:00:00', '30/4/2019 - 2/5/2019'],     //11
-    ['HK3 2018-2019', '2019-5-8 00:00:00', '2019-8-11 00:00:00', '16/8/2019 - 25/9/2019'],    //12
-];
-//[name,code]
-var insert_programs = [
-    ['Chính Quy', 'CTT'],
-    ['Việt Pháp', 'VP'],
-    ['Chất lượng cao', 'CLC'],
-    ['Cử nhân tài năng', 'TN'],
-    ['Chương trình tiên tiến', 'TT'],
-];
-//[code,email,program_id]
-var insert_classes = [
-    ['16CTT', '16ctt@student.hcmus.edu.vn', 1], //1
-    ['15CTT', '15ctt@student.hcmus.edu.vn', 1], //2
-    ['14CTT', '14ctt@student.hcmus.edu.vn', 1], //3
-    ['13CTT', '13ctt@student.hcmus.edu.vn', 1], //4
-    ['16VP', '16vp@student.hcmus.edu.vn', 2], //5
-    ['15VP', '15vp@student.hcmus.edu.vn', 2], //6
-    ['14VP', '14vp@student.hcmus.edu.vn', 2], //7
-    ['13VP', '13vp@student.hcmus.edu.vn', 2], //8
-    ['16CLC', '16clc@student.hcmus.edu.vn', 3], //9
-    ['15CLC', '15clc@student.hcmus.edu.vn', 3], //10
-    ['14CLC', '14clc@student.hcmus.edu.vn', 3], //11
-    ['13CLC', '13clc@student.hcmus.edu.vn', 3], //12
-    ['16TN', '16tn@student.hcmus.edu.vn', 4], //13
-    ['15TN', '15tn@student.hcmus.edu.vn', 4], //14
-    ['14TN', '14tn@student.hcmus.edu.vn', 4], //15
-    ['13TN', '13tn@student.hcmus.edu.vn', 4], //16
-    ['16TN', '16tt@student.hcmus.edu.vn', 5], //17
-    ['15TT', '15tt@student.hcmus.edu.vn', 5], //18
-    ['14TT', '14tt@student.hcmus.edu.vn', 5], //19
-    ['13TT', '13tt@student.hcmus.edu.vn', 5], //20
-];
-//[code, name, semester_id, program_id, office_hour, note]
-var insert_courses = [
-    ['DEO251', 'Computational Biology and Chemistry', 4, 2, null, null],
-    ['BXD572', 'Advances in Engineering Software', 4, 1, null, null],
-    ['RPY307', 'Computers and Biomedical Research', 4, 1, null, null],
-    ['VKLW825', 'Computer Languages', 4, 3, null, 'Sed ut perspiciatis'],
-    ['BVX636', 'Computer Standards & Interfaces', 4, 3, null, null],
-    ['DIPX607', 'Computer Aided Geometric Design', 4, 5, null, null],
-    ['GUK125', 'Computational Geometry', 4, 5, null, null],
-    ['HGV739', 'Computer Vision, Graphics, and Image Processing', 4, 2, null, null],
-    ['CFG527', 'Computer Compacts', 4, 1, null, 'Sed ut perspiciatis'],
-    ['SPI115', 'Applied Soft Computing', 4, 3, null, null],
-    ['TDJXY828', 'Cognitive Systems Research', 4, 4, null, null],
-    ['DTAPU640', 'Artificial Intelligence', 4, 2, null, null],
-    ['TTYJ773', 'Computer Networks', 4, 4, null, null],
-    ['YFO817', 'Biometric Technology Today', 4, 5, null, null],
-    ['VFGP382', 'Artificial Intelligence in Medicine', 4, 5, null, 'Sed ut perspiciatis'],
-    ['MWU251', 'Computer Networks (1976],', 4, 2, null, null],
-    ['UPWF117', 'Computer Methods in Applied Mechanics and Engineering', 4, 3, null, null],
-    ['NGU771', 'Advanced Engineering Informatics', 4, 5, null, 'Sed ut perspiciatis'],
-    ['LJF488', 'Computer Programs in Biomedicine', 4, 5, null, 'Sed ut perspiciatis'],
-    ['ISCGD902', 'Computer Speech & Language', 4, 1, null, null],
-    ['SYSCA372', 'Computer Law & Security Report', 4, 2, null, null],
-    ['CKOHH125', 'Computers & Chemistry', 4, 1, null, null],
-    ['BBVTH758', 'Computer Methods and Programs in Biomedicine', 4, 1, null, null],
-    ['KFLID866', 'Computational Statistics & Data Analysis', 4, 1, null, null],
-    ['XWBV912', 'Computer Vision and Image Understanding', 4, 3, null, null],
-    ['ILJX823', 'Computers and Standards', 4, 2, null, null],
-    ['XYARK043', 'Artificial Intelligence in Engineering', 4, 2, null, null],
-    ['POTYY911', 'Computer Physics Reports', 4, 4, null, null],
-    ['OKU795', 'Computer Communications', 4, 3, null, 'Sed ut perspiciatis'],
-    ['ZMX660', 'Computers & Urban Society', 4, 4, null, null],
-    ['LBX450', 'Computers & Security', 4, 5, null, 'Sed ut perspiciatis'],
-    ['MUQ436', 'Computers & Structures', 4, 4, null, 'Sed ut perspiciatis'],
-    ['HTX111', 'Computer Languages, Systems & Structures', 4, 5, null, null],
-    ['EKIEU541', 'Computerized Medical Imaging and Graphics', 4, 3, null, null],
-    ['ITSYH813', 'Computer Networks and ISDN Systems', 4, 5, null, null],
-    ['QHWQB333', 'Computer Fraud & Security', 4, 4, null, null],
-    ['GKPT667', 'Ad Hoc Networks', 4, 2, null, null],
-    ['PUM854', 'Computer Fraud & Security Bulletin', 4, 4, null, null],
-    ['FOPI085', 'Computers in Biology and Medicine', 4, 2, null, null],
-    ['OMWT331', 'Computers & Geosciences', 4, 1, null, null],
-    ['TDO667', 'Computer Physics Communications', 4, 1, null, null],
-    ['IVR855', 'AEU - International Journal of Electronics and Communications', 4, 4, null, null],
-    ['XKNKO437', 'Computers and Geotechnics', 4, 5, null, 'Sed ut perspiciatis'],
-    ['DJRQ310', 'Computer-Aided Design', 4, 4, null, null],
-    ['RSR044', 'Cognitive Science', 4, 4, null, null],
-    ['LFS755', 'Computers and Electronics in Agriculture', 4, 1, null, null],
-    ['KUS664', 'Computer Graphics and Image Processing', 4, 3, null, null],
-    ['BOC224', 'Card Technology Today', 4, 2, null, null],
-    ['WMD836', 'Computers & Graphics', 4, 3, null, null],
-    ['IXFM718', 'Computer Audit Update', 4, 3, null, null],
-];
 
-//[class_id,course_id,schedules]
-var insert_class_has_course = [
-    [1, 7, '10-I6-TH'],
-    [1, 15, '19-E5-TH'],
-    [1, 18, '3-B20-TH'],
-    [1, 19, '16-I1-LT;13-B8-TH;14-B13-LT'],
-    [1, 31, '4-F23-LT;2-F23-TH'],
-    [1, 33, '12-F23-LT'],
-    [1, 35, '1-F23-TH;19-C17-LT;3-E1-LT'],
-    [1, 43, '9-C10-LT'],
-    [2, 6, '3-B3-TH;1-B6-TH;5-E13-TH'],
-    [2, 7, '1-F14-LT'],
-    [2, 14, '7-B6-LT;3-E8-TH;2-E19-TH'],
-    [2, 15, '12-B15-TH'],
-    [2, 19, '7-I8-TH;9-B22-TH'],
-    [2, 35, '6-B10-TH;7-I7-TH;19-I18-TH'],
-    [2, 43, '6-E16-LT'],
-    [3, 6, '21-C9-LT;3-B19-TH;14-E9-TH'],
-    [3, 7, '2-C11-LT;16-B4-TH'],
-    [3, 14, '0-B17-TH;21-E17-TH'],
-    [3, 15, '19-F4-TH'],
-    [3, 18, '12-F8-TH;17-C18-LT;20-B13-LT'],
-    [3, 31, '1-B15-TH;19-B1-LT;7-F12-LT'],
-    [3, 35, '0-F2-TH;16-F2-LT'],
-    [3, 43, '12-B21-TH;16-I4-TH;0-I14-LT'],
-    [4, 6, '17-I14-TH;10-F15-TH'],
-    [4, 7, '19-B13-TH'],
-    [4, 14, '19-I16-TH;19-C1-TH'],
-    [4, 18, '8-E2-TH;1-B7-LT;21-F19-LT'],
-    [4, 19, '3-E12-LT'],
-    [4, 31, '17-B13-TH'],
-    [4, 33, '11-I2-TH;3-B17-TH;19-E21-LT'],
-    [4, 43, '17-B12-LT;16-C3-LT;0-I11-TH'],
-    [5, 1, '9-E11-TH;13-F22-LT;9-C13-LT'],
-    [5, 8, '10-E22-TH'],
-    [5, 27, '5-I19-TH;1-F2-TH'],
-    [5, 39, '15-B1-TH;15-C18-LT'],
-    [6, 1, '2-I20-LT;1-I23-TH;14-I6-TH'],
-    [6, 12, '12-E5-TH;21-B20-TH'],
-    [6, 16, '21-I3-TH;9-B8-TH;16-F9-TH'],
-    [6, 21, '9-E12-LT;17-E2-TH'],
-    [6, 27, '16-E20-TH;1-I23-LT'],
-    [6, 37, '5-I10-LT'],
-    [6, 39, '16-C4-LT'],
-    [6, 48, '12-B14-LT;19-B7-TH;14-F12-TH'],
-    [7, 1, '15-E20-LT;9-B13-TH;16-C2-TH'],
-    [7, 8, '0-F2-TH;6-I9-LT;7-I2-TH'],
-    [7, 12, '19-F18-TH'],
-    [7, 21, '4-I20-LT'],
-    [7, 26, '2-C22-LT;3-E17-LT;10-I15-LT'],
-    [7, 27, '11-E21-LT'],
-    [7, 37, '11-C23-LT'],
-    [7, 48, '8-C13-LT;7-B23-LT;2-B19-TH'],
-    [8, 8, '14-I16-LT;1-F5-LT'],
-    [8, 12, '11-I13-TH'],
-    [8, 16, '10-B6-LT;2-E4-LT;2-C14-LT'],
-    [8, 21, '1-F10-TH'],
-    [8, 27, '8-B6-TH;8-C2-TH;9-B12-TH'],
-    [8, 37, '0-I10-LT;2-E15-TH;11-F17-LT'],
-    [8, 39, '6-F16-TH;18-I3-TH'],
-    [9, 2, '10-B18-TH;2-I5-LT'],
-    [9, 3, '3-F6-TH;14-F8-LT'],
-    [9, 9, '1-F20-LT'],
-    [9, 20, '21-B2-TH'],
-    [9, 22, '5-E10-TH;8-E11-LT;4-F13-LT'],
-    [9, 23, '13-B12-TH;2-C8-LT;11-F23-LT'],
-    [9, 40, '9-E21-LT'],
-    [9, 41, '17-I10-TH;4-B22-LT'],
-    [9, 46, '0-B16-TH;9-E8-LT;11-E11-TH'],
-    [10, 2, '5-E16-TH'],
-    [10, 9, '7-I20-LT;12-B19-LT'],
-    [10, 23, '20-I8-LT;1-F9-LT'],
-    [10, 24, '9-C11-TH;3-I22-TH;8-C7-TH'],
-    [10, 41, '10-F9-TH'],
-    [10, 46, '7-B13-LT'],
-    [11, 2, '14-I20-LT;17-B23-TH;20-C4-TH'],
-    [11, 3, '9-I16-LT;15-I5-LT'],
-    [11, 9, '8-I15-LT;10-F5-LT;9-I15-TH'],
-    [11, 20, '21-C12-TH;8-F23-LT;8-I20-LT'],
-    [11, 22, '3-B18-LT'],
-    [11, 23, '18-E7-LT;5-B18-TH;14-E1-LT'],
-    [11, 24, '19-I15-LT;3-E9-LT'],
-    [11, 40, '19-F13-TH;11-C13-LT'],
-    [11, 41, '15-C7-TH;17-B22-TH;15-I18-TH'],
-    [12, 2, '11-F13-LT'],
-    [12, 3, '4-F22-LT;15-B16-TH;14-B11-TH'],
-    [12, 9, '20-E9-TH;1-F4-TH;5-I2-TH'],
-    [12, 20, '11-I8-TH;1-B3-LT;11-C6-TH'],
-    [12, 23, '13-C21-LT;2-B5-LT'],
-    [12, 40, '11-I10-LT'],
-    [12, 41, '18-F6-LT'],
-    [13, 11, '10-I18-TH;0-I15-TH'],
-    [13, 30, '20-F14-TH;14-C5-LT;19-E7-LT'],
-    [13, 32, '4-B5-TH'],
-    [13, 36, '8-F17-LT;10-F17-LT;13-I3-LT'],
-    [13, 42, '12-E4-LT;14-F18-TH;2-F20-TH'],
-    [13, 45, '14-C15-LT'],
-    [14, 11, '10-B22-TH;18-B2-LT'],
-    [14, 13, '20-E5-LT'],
-    [14, 28, '10-E1-LT;9-B15-TH'],
-    [14, 32, '16-I18-TH;12-F2-LT;5-C11-LT'],
-    [14, 36, '0-E19-LT;15-B14-LT;3-I3-LT'],
-    [14, 38, '19-C1-LT'],
-    [14, 42, '13-I10-LT;12-F23-LT;2-C21-TH'],
-    [14, 44, '5-E1-LT;10-C15-LT;20-F12-TH'],
-    [14, 45, '5-I10-TH;0-B7-LT;0-I15-TH'],
-    [15, 11, '1-C7-LT;21-F5-TH;3-F3-TH'],
-    [15, 13, '4-B19-TH'],
-    [15, 28, '6-F8-TH;18-B7-LT;8-B15-TH'],
-    [15, 30, '21-B8-LT;18-B13-TH;19-F11-TH'],
-    [15, 32, '21-B20-TH'],
-    [15, 36, '8-C5-TH;6-F8-TH;1-F2-LT'],
-    [15, 38, '8-E3-LT'],
-    [15, 42, '10-C5-TH'],
-    [15, 44, '4-I10-LT;4-I1-TH;18-I2-LT'],
-    [16, 11, '12-C17-LT'],
-    [16, 13, '12-I5-LT;10-B11-LT'],
-    [16, 28, '4-I16-TH;15-F19-TH;12-I5-LT'],
-    [16, 32, '2-B23-TH;0-F1-TH;18-I22-TH'],
-    [16, 36, '3-B15-LT;19-B8-LT;12-F21-LT'],
-    [16, 38, '2-I6-LT;21-C4-LT;2-I7-LT'],
-    [16, 42, '20-B20-TH;9-E5-LT;3-C8-TH'],
-    [16, 44, '0-I23-LT;6-C10-LT;13-E11-LT'],
-    [17, 4, '3-E8-TH;19-E23-LT;17-F6-LT'],
-    [17, 10, '2-F20-TH'],
-    [17, 25, '10-F23-TH'],
-    [17, 34, '7-F13-LT'],
-    [17, 47, '11-C7-LT;17-C8-LT'],
-    [17, 49, '4-B9-LT'],
-    [17, 50, '0-B12-LT;18-B22-LT'],
-    [18, 4, '11-E3-TH;8-B4-TH;2-F5-LT'],
-    [18, 17, '9-F10-LT;18-B21-LT;15-I14-TH'],
-    [18, 25, '16-B11-LT;19-B16-TH;0-E12-TH'],
-    [18, 29, '10-C6-LT;7-I5-LT;8-F13-TH'],
-    [18, 34, '16-C10-TH;12-F10-LT;0-C14-TH'],
-    [18, 47, '9-B15-LT;5-E14-TH;3-B13-TH'],
-    [18, 49, '15-B13-LT;18-E17-LT;8-E16-TH'],
-    [18, 50, '18-I3-TH;14-E15-LT;1-I6-TH'],
-    [19, 10, '8-I15-TH'],
-    [19, 17, '14-F3-TH'],
-    [19, 25, '0-F19-LT;18-I12-LT;6-E12-LT'],
-    [19, 29, '16-B19-LT;7-I23-TH;16-F1-TH'],
-    [19, 34, '13-E9-LT;10-F17-TH'],
-    [19, 49, '15-E23-LT;17-I4-LT'],
-    [19, 50, '6-I5-TH'],
-    [20, 5, '11-F10-TH'],
-    [20, 10, '8-E15-TH;2-B3-LT;0-E15-TH'],
-    [20, 17, '5-I15-LT;9-F23-LT;6-E19-TH'],
-    [20, 47, '0-E14-TH;12-F23-TH;13-I4-LT'],
-    [20, 50, '10-C19-TH'],
-];
-
-
-//[first_name,last_name,email,phone,password,role_id]
-var insert_users = [
-    ['Đinh Bá', 'Tiến', 'dbtien@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Hữu', 'Anh', 'nhanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Hữu', 'Nhã', 'nhnha@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Ngọc', 'Thu', 'nnthu@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Văn', 'Hùng', 'nvhung@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Minh', 'Triết', 'tmtriet@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Phạm Hoàng', 'Uyên', 'phuyen@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Phúc', 'Sơn', 'npson@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Ngô Tuấn', 'Phương', 'ntphuong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Tuấn', 'Nam', 'ntnam@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thanh', 'Phương', 'ntphuong1@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Trung', 'Dũng', 'ttdung@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Thái', 'Sơn', 'ttson@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Ngô Đức', 'Thành', 'ndthanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Dương Nguyên', 'Vũ', 'dnvu@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lâm Quang', 'Vũ', 'lqvu@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Hồ Tuấn', 'Thanh', 'htthanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trương Phước', 'Lộc', 'tploc@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Hữu Trí', 'Nhật', 'nhtnhat@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Duy Hoàng', 'Minh', 'ndhminh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lương Vĩ', 'Minh', 'lvminh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Vinh', 'Tiệp', 'nvtiep@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Phạm Việt', 'Khôi', 'pvkhoi@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Văn', 'Thìn', 'nvthin@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thị Thanh', 'Huyền', 'ntthuyen@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Vũ Quốc', 'Hoàng', 'vqhoang@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Quốc', 'Hòa', 'lqhoa@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Chung Thùy', 'Linh', 'ctlinh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Yên', 'Thanh', 'lythanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Võ Hoài', 'Việt', 'vhviet@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Phạm Thanh', 'Tùng', 'pttung@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Đức', 'Huy', 'ndhuy@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Khắc', 'Huy', 'nkhuy@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Duy', 'Quang', 'tdquang@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Ngọc Đạt', 'Thành', 'tndthanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Minh', 'Quốc', 'lmquoc@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Phạm Đức', 'Thịnh', 'pdthinh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Bùi Quốc', 'Minh', 'bqminh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Võ Duy', 'Anh', 'vdanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Thị Bích', 'Hạnh', 'ttbhanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trương Phước', 'Lộc', 'tploc@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Duy', 'Quang', 'tdquang@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Tuấn Nguyên Đức', 'Hoài', 'tndhoai@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Hoàng', 'Khanh', 'thkhanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Thị', 'Nhàn', 'ltnhan@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thị Thu', 'Vân', 'nttvan@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thanh', 'Trọng', 'nttrong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Phạm Tuấn', 'Sơn', 'ptson@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Đỗ Hoàng', 'Cường', 'dhcuong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Quản Thị Nguyệt', 'Thơ', 'qtntho@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Trần Minh', 'Thư', 'ntmthu@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Đặng Bình', 'Phương', 'dbphuong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Cao Thị Thùy', 'Liên', 'cttlien@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Trần Xuân Thiên', 'An', 'txtan@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Ngô Chánh', 'Đức', 'ncduc@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Văn', 'Chánh', 'lvchanh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Huỳnh Ngọc', 'Chương', 'hnchuong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thanh Quản', 'Quản', 'ntquan@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Viết', 'Long', 'lvlong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Nguyễn Thành', 'Long', 'ntlong@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Lê Nguyễn Hoài', 'Nam', 'lnhnam@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-    ['Bùi Đắc', 'Thịnh', 'bdthinh@fit.hcmus.edu.vn', '090xxxx', bcrypt.hashSync('1512517', 10), 2],
-];
-//[teacher_id,course_id,teacher_role],
-var insert_teacher_teach_course = [
-    ['1', '1', '0'],
-    ['17', '1', '1'],
-    ['18', '1', '1'],
-
-    ['2', '2', '0'],
-    ['19', '2', '1'],
-
-    ['3', '3', '0'],
-    ['20', '3', '1'],
-
-    ['4', '4', '0'],
-
-    ['5', '5', '0'],
-
-    ['6', '6', '0'],
-    ['21', '6', '1'],
-    ['22', '6', '1'],
-    ['23', '6', '1'],
-
-    ['7', '7', '0'],
-    ['24', '7', '1'],
-    ['8', '8', '0'],
-
-    ['19', '8', '1'],
-
-    ['9', '9', '0'],
-
-    ['10', '10', '0'],
-    ['25', '10', '1'],
-
-    ['11', '11', '0'],
-    ['26', '11', '1'],
-
-    ['12', '12', '0'],
-    ['27', '12', '1'],
-    ['28', '12', '1'],
-
-    ['2', '13', '0'],
-    ['6', '13', '0'],
-    ['22', '13', '1'],
-    ['23', '13', '1'],
-    ['29', '13', '1'],
-
-    ['13', '14', '0'],
-    ['31', '14', '1'],
-    ['30', '14', '1'],
-
-    ['14', '15', '0'],
-    ['22', '15', '1'],
-
-    ['16', '16', '0'],
-    ['23', '16', '1'],
-    ['31', '16', '1'],
-    ['32', '16', '1'],
-    ['33', '16', '1'],
-    ['34', '16', '1'],
-
-    ['15', '17', '0'],
-    ['38', '17', '1'],
-    ['37', '17', '1'],
-    ['36', '17', '1'],
-    ['35', '17', '1'],
-
-    ['16', '18', '0'],
-    ['40', '18', '1'],
-    ['39', '18', '1'],
-
-    ['16', '19', '0'],
-    ['31', '19', '1'],
-    ['43', '19', '1'],
-    ['17', '19', '1'],
-    ['42', '19', '1'],
-    ['40', '19', '1'],
-
-    ['1', '20', '0'],
-    ['17', '20', '1'],
-    ['18', '20', '1'],
-
-    ['45', '21', '0'],
-    ['21', '21', '1'],
-    ['55', '21', '1'],
-
-    ['46', '22', '0'],
-    ['56', '22', '1'],
-
-    ['47', '23', '0'],
-    ['57', '23', '1'],
-
-    ['48', '24', '0'],
-    ['58', '24', '1'],
-    ['59', '24', '1'],
-
-    ['49', '25', '0'],
-    ['60', '25', '1'],
-    ['59', '25', '1'],
-
-    ['7', '26', '0'],
-    ['24', '26', '1'],
-
-    ['9', '27', '0'],
-
-    ['4', '28', '0'],
-
-    ['50', '29', '0'],
-
-    ['51', '30', '0'],
-    ['61', '30', '1'],
-    ['62', '30', '1'],
-
-    ['52', '31', '0'],
-    ['17', '31', '1'],
-    ['32', '31', '1'],
-
-    ['40', '32', '0'],
-    ['21', '32', '1'],
-    ['34', '32', '1'],
-
-    ['16', '33', '0'],
-    ['40', '33', '1'],
-    ['18', '33', '1'],
-
-    ['53', '34', '0'],
-    ['32', '34', '1'],
-
-    ['54', '35', '0'],
-];
-//[id, stud_id, class_id]
-//[student_id, reason, start_date, end_date]
-var insert_absence_requests = [
-    [63, 'Đi khám nghĩa vụ quân sự', '2017-05-31 00:00:00', '2017-06-01 00:00:00'],
-    [63, 'Đi thi ACM', '2017-06-03 00:00:00', '2017-06-10 00:00:00'],
-];
-//[from_id, to_id, title, content, category, type, read, replied]
-var insert_feeback = [
-    [null, null, 'Phòng học kém chất lượng', 'Máy lạnh nóng quớ', 2, 3, false, false],//1
-    [171, 1, 'Thầy dạy quá nhanh', 'Thầy có thể dạy chậm lại cho em dễ hiểu ?', 1, 1, false, false],//2
-    [171, null, 'Ổ điện hỏng', 'Ổ điện dãy giữa phòng I44 bị hỏng', 2, 1, true, true],//3
-    [171, null, 'Lớp 13CLC hư', 'Lớp 13CLC nói chuyện quá nhiều trong giờ', 1, 1, true, true],//4
-    [null, null, 'Phòng học chất lượng thấp', 'Khong co may lanh', 2, 3, false, false],//5
-    [171, 1, 'Thầy dạy quá khó hiểu', 'Thầy có thể dạy chậm lại cho em dễ hiểu ?', 1, 1, false, false],//6
-    [171, 2, 'Cô hay đến lớp trễ', 'Tóc mới của cô làm em khó tập trung quá!', 1, 1, false, false],//7
-    [1, null, 'Ổ điện không mở được', 'Cô hãy fix giúp tụi em', 2, 1, true, true],//8
-    [1, null, 'Lớp 13CLC cúp học cả lớp', 'Lớp 13CLC nói chuyện quá ', 1, 1, true, true]//9
-];
-//[title, class_has_course_id, created_by,is_template]
-var insert_quiz = [
-    ['KTLT tuần 1', 20, 1, 1], //1
-];
-//[quiz_id, text, option_a, option_b, option_c, option_d, correct_option, timer]
-var insert_quiz_question = [
-    [1, `Kiểu nào có kích thước lớn nhất`, 'int', 'char', 'long', 'double', 'double', 10], //1
-    [1, `Dạng hậu tố của biểu thức 9 - (5 + 2) là ?`, '95-+2', '95-2+', '952+-', '95+2-', '952+-', 10], //2
-    [1, `Giả sử a và b là hai số thực. Biểu thức nào dưới đây là không được phép theo cú pháp của ngôn ngữ lập trình C?`, 'ab', 'a-=b', 'a>>=b', 'a*=b', 'a>>=b', 10],//3
-];
-//[quiz_question_id, selected_option, answered_by]
-var insert_quiz_answer = [
-    [1, `C`, 114], //1
-    [1, `D`, 115], //2
-    [2, `B`, 114], //3
-    [2, `C`, 115], //4
-    [3, `C`, 116], //3
-    [3, `A`, 117], //4
-];
-//[to_id, message, object_id, type]
-var insert_notifications = [
-    [null, 1, `Đinh Bá Tiến sent you a feedback`, 5, _global.notification_type.sent_feedback], //1
+var insert_users2 = [
+    ['Rivera', 'Jerome', '1611263@student.hcmus.edu.vn', '0800-164-112', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Johnnie', '1514534@student.hcmus.edu.vn', '0800-686-422', bcrypt.hashSync('1512517', 10), 1],
+    ['Lopez', 'Maya', '1614587@student.hcmus.edu.vn', '1-866-717-83', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Keira', '1511238@student.hcmus.edu.vn', '1-877-739-45', bcrypt.hashSync('1512517', 10), 1],
+    ['Harris', 'Violet', '1315754@student.hcmus.edu.vn', '0800-216-373', bcrypt.hashSync('1512517', 10), 1],
+    ['Parker', 'Ray', '1312143@student.hcmus.edu.vn', '1-844-546-09', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Christopher', '1514614@student.hcmus.edu.vn', '0800-234-149', bcrypt.hashSync('1512517', 10), 1],
+    ['Price', 'Jesse', '1415988@student.hcmus.edu.vn', '0800-877-816', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Kaitlyn', '1413411@student.hcmus.edu.vn', '1-844-334-19', bcrypt.hashSync('1512517', 10), 1],
+    ['Cox', 'Jesse', '1512490@student.hcmus.edu.vn', '0800-878-875', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Leon', '1313224@student.hcmus.edu.vn', '0800-752-214', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Cory', '1312822@student.hcmus.edu.vn', '1-888-597-22', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Perry', '1613452@student.hcmus.edu.vn', '0800-635-966', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Mark', '1514197@student.hcmus.edu.vn', '1-855-618-66', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Ramon', '1315822@student.hcmus.edu.vn', '0800-824-613', bcrypt.hashSync('1512517', 10), 1],
+    ['Garcia', 'Jeffery', '1611726@student.hcmus.edu.vn', '0800-724-561', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Kaitlyn', '1515861@student.hcmus.edu.vn', '0800-447-526', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Mark', '1513615@student.hcmus.edu.vn', '0800-312-241', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Phillip', '1512243@student.hcmus.edu.vn', '0800-618-493', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Sarah', '1615654@student.hcmus.edu.vn', '1-866-341-66', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Juan', '1412615@student.hcmus.edu.vn', '1-855-118-78', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Isabelle', '1312975@student.hcmus.edu.vn', '1-800-312-24', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Franklin', '1411587@student.hcmus.edu.vn', '0800-909-465', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Wade', '1612750@student.hcmus.edu.vn', '0800-175-413', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Ernest', '1411243@student.hcmus.edu.vn', '1-800-074-34', bcrypt.hashSync('1512517', 10), 1],
+    ['Gomez', 'Makayla', '1311086@student.hcmus.edu.vn', '0800-478-565', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Emily', '1512822@student.hcmus.edu.vn', '1-877-748-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Darryl', '1312853@student.hcmus.edu.vn', '0800-485-144', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Gordon', '1615646@student.hcmus.edu.vn', '1-855-768-51', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Kevin', '1512853@student.hcmus.edu.vn', '1-888-485-85', bcrypt.hashSync('1512517', 10), 1],
+    ['Perez', 'Julian', '1314143@student.hcmus.edu.vn', '1-855-850-34', bcrypt.hashSync('1512517', 10), 1],
+    ['Garcia', 'Ronnie', '1611535@student.hcmus.edu.vn', '0800-425-377', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Marc', '1513886@student.hcmus.edu.vn', '1-800-281-55', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Julian', '1413587@student.hcmus.edu.vn', '0800-672-398', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Victoria', '1315411@student.hcmus.edu.vn', '0800-422-928', bcrypt.hashSync('1512517', 10), 1],
+    ['Myers', 'Gabriel', '1313450@student.hcmus.edu.vn', '0800-564-116', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Donald', '1612754@student.hcmus.edu.vn', '1-888-606-68', bcrypt.hashSync('1512517', 10), 1],
+    ['Bailey', 'Peter', '1415035@student.hcmus.edu.vn', '0800-718-093', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Marion', '1611435@student.hcmus.edu.vn', '1-844-051-66', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Hannah', '1512847@student.hcmus.edu.vn', '1-844-558-58', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Gilbert', '1414402@student.hcmus.edu.vn', '0800-305-621', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Matthew', '1312756@student.hcmus.edu.vn', '1-855-716-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Lawrence', '1611026@student.hcmus.edu.vn', '1-855-646-36', bcrypt.hashSync('1512517', 10), 1],
+    ['Bailey', 'Alexander', '1312281@student.hcmus.edu.vn', '0800-536-543', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Lillian', '1513157@student.hcmus.edu.vn', '1-866-623-01', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Sarah', '1614774@student.hcmus.edu.vn', '0800-818-456', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Leon', '1413822@student.hcmus.edu.vn', '1-877-442-51', bcrypt.hashSync('1512517', 10), 1],
+    ['Allen', 'Arthur', '1612108@student.hcmus.edu.vn', '1-800-007-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Campbell', 'Lance', '1413727@student.hcmus.edu.vn', '0800-255-432', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Ken', '1415839@student.hcmus.edu.vn', '1-855-957-91', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Terry', '1511118@student.hcmus.edu.vn', '1-844-823-87', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Darryl', '1613273@student.hcmus.edu.vn', '0800-825-644', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Wade', '1513402@student.hcmus.edu.vn', '0800-344-649', bcrypt.hashSync('1512517', 10), 1],
+    ['Edwards', 'Charlie', '1312820@student.hcmus.edu.vn', '1-888-444-58', bcrypt.hashSync('1512517', 10), 1],
+    ['Williams', 'Leon', '1314535@student.hcmus.edu.vn', '1-844-187-83', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Andy', '1312615@student.hcmus.edu.vn', '1-877-976-43', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Stanley', '1314778@student.hcmus.edu.vn', '0800-824-895', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Darrell', '1414253@student.hcmus.edu.vn', '0800-935-696', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Marvin', '1415086@student.hcmus.edu.vn', '0800-463-776', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Raul', '1612452@student.hcmus.edu.vn', '1-866-648-36', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Curtis', '1513727@student.hcmus.edu.vn', '1-888-341-42', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Juan', '1513534@student.hcmus.edu.vn', '1-877-451-96', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Isabelle', '1615116@student.hcmus.edu.vn', '1-877-236-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Roberto', '1615147@student.hcmus.edu.vn', '0800-180-347', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Dustin', '1415238@student.hcmus.edu.vn', '0800-881-616', bcrypt.hashSync('1512517', 10), 1],
+    ['Peterson', 'Clara', '1414750@student.hcmus.edu.vn', '0800-188-834', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Jerry', '1412441@student.hcmus.edu.vn', '0800-142-656', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Everett', '1513411@student.hcmus.edu.vn', '1-866-574-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Mitchell', '1413468@student.hcmus.edu.vn', '1-855-158-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Parker', 'Ramon', '1612820@student.hcmus.edu.vn', '1-866-762-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Hannah', '1413147@student.hcmus.edu.vn', '0800-777-118', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Ronnie', '1312435@student.hcmus.edu.vn', '1-877-881-54', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Arthur', '1414158@student.hcmus.edu.vn', '0800-257-725', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Makayla', '1612441@student.hcmus.edu.vn', '1-866-277-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Carter', 'Larry', '1514668@student.hcmus.edu.vn', '0800-914-794', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Adalyn', '1315485@student.hcmus.edu.vn', '0800-280-615', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Jacob', '1614726@student.hcmus.edu.vn', '1-877-732-33', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Armando', '1313157@student.hcmus.edu.vn', '0800-729-472', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Terry', '1615086@student.hcmus.edu.vn', '0800-574-458', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Antonio', '1314806@student.hcmus.edu.vn', '1-855-881-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Baker', 'Scarlett', '1414565@student.hcmus.edu.vn', '0800-812-937', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Kaitlyn', '1314717@student.hcmus.edu.vn', '0800-726-344', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Violet', '1315886@student.hcmus.edu.vn', '0800-106-163', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Clinton', '1612682@student.hcmus.edu.vn', '1-866-449-13', bcrypt.hashSync('1512517', 10), 1],
+    ['Rogers', 'Barry', '1514108@student.hcmus.edu.vn', '1-844-615-24', bcrypt.hashSync('1512517', 10), 1],
+    ['Cox', 'Sarah', '1513587@student.hcmus.edu.vn', '0800-974-495', bcrypt.hashSync('1512517', 10), 1],
+    ['Gonzalez', 'Avery', '1514847@student.hcmus.edu.vn', '1-844-466-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Roland', '1414852@student.hcmus.edu.vn', '1-844-568-16', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Charlie', '1315108@student.hcmus.edu.vn', '0800-857-655', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Larry', '1614435@student.hcmus.edu.vn', '1-855-312-74', bcrypt.hashSync('1512517', 10), 1],
+    ['Perez', 'Wayne', '1611143@student.hcmus.edu.vn', '1-866-921-32', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Michael', '1415161@student.hcmus.edu.vn', '1-866-364-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Gene', '1614367@student.hcmus.edu.vn', '1-866-923-75', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Leo', '1415281@student.hcmus.edu.vn', '1-866-647-41', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Hannah', '1314879@student.hcmus.edu.vn', '1-866-311-50', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Claire', '1615722@student.hcmus.edu.vn', '1-855-822-75', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Nicholas', '1411224@student.hcmus.edu.vn', '1-844-645-15', bcrypt.hashSync('1512517', 10), 1],
+    ['Lee', 'Manuel', '1514811@student.hcmus.edu.vn', '1-877-287-67', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Ellie', '1511617@student.hcmus.edu.vn', '0800-766-888', bcrypt.hashSync('1512517', 10), 1],
+    ['Martin', 'Leo', '1515756@student.hcmus.edu.vn', '1-800-355-75', bcrypt.hashSync('1512517', 10), 1],
+    ['Moore', 'Wayne', '1312668@student.hcmus.edu.vn', '0800-758-166', bcrypt.hashSync('1512517', 10), 1],
+    ['Hernandez', 'Grace', '1515238@student.hcmus.edu.vn', '0800-589-442', bcrypt.hashSync('1512517', 10), 1],
+    ['Edwards', 'Ken', '1311253@student.hcmus.edu.vn', '1-877-276-84', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Jaime', '1411587@student.hcmus.edu.vn', '1-800-572-76', bcrypt.hashSync('1512517', 10), 1],
+    ['Perry', 'Edward', '1613651@student.hcmus.edu.vn', '1-844-500-72', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Sarah', '1413294@student.hcmus.edu.vn', '1-800-125-97', bcrypt.hashSync('1512517', 10), 1],
+    ['Davis', 'Ruben', '1311732@student.hcmus.edu.vn', '0800-769-694', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Roberto', '1412636@student.hcmus.edu.vn', '1-855-305-65', bcrypt.hashSync('1512517', 10), 1],
+    ['James', 'Dan', '1411108@student.hcmus.edu.vn', '1-855-558-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Butler', 'Roland', '1412751@student.hcmus.edu.vn', '1-855-880-67', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Ben', '1414847@student.hcmus.edu.vn', '0800-555-603', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Gordon', '1315843@student.hcmus.edu.vn', '0800-966-517', bcrypt.hashSync('1512517', 10), 1],
+    ['Williams', 'Hailey', '1612556@student.hcmus.edu.vn', '0800-231-267', bcrypt.hashSync('1512517', 10), 1],
+    ['Moore', 'Darryl', '1412646@student.hcmus.edu.vn', '0800-905-809', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Christopher', '1411654@student.hcmus.edu.vn', '0800-421-332', bcrypt.hashSync('1512517', 10), 1],
+    ['Evans', 'Aaliyah', '1313229@student.hcmus.edu.vn', '1-866-077-61', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Ronnie', '1613756@student.hcmus.edu.vn', '0800-468-816', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Nelson', '1311143@student.hcmus.edu.vn', '1-877-728-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Henry', '1312587@student.hcmus.edu.vn', '1-866-886-55', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Kevin', '1614157@student.hcmus.edu.vn', '1-855-825-71', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Terry', '1615861@student.hcmus.edu.vn', '1-844-343-45', bcrypt.hashSync('1512517', 10), 1],
+    ['Butler', 'Rodney', '1514441@student.hcmus.edu.vn', '1-855-194-63', bcrypt.hashSync('1512517', 10), 1],
+    ['Anderson', 'Nelson', '1612975@student.hcmus.edu.vn', '1-855-114-56', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Lance', '1512109@student.hcmus.edu.vn', '0800-163-394', bcrypt.hashSync('1512517', 10), 1],
+    ['Ward', 'Hannah', '1411750@student.hcmus.edu.vn', '0800-735-308', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Sam', '1613853@student.hcmus.edu.vn', '1-877-137-14', bcrypt.hashSync('1512517', 10), 1],
+    ['Williams', 'Jesus', '1411026@student.hcmus.edu.vn', '0800-044-527', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Terrence', '1315847@student.hcmus.edu.vn', '0800-262-105', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Michael', '1412774@student.hcmus.edu.vn', '0800-859-640', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Dustin', '1615490@student.hcmus.edu.vn', '0800-665-080', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Eric', '1615852@student.hcmus.edu.vn', '0800-734-244', bcrypt.hashSync('1512517', 10), 1],
+    ['Myers', 'Julian', '1612490@student.hcmus.edu.vn', '1-844-606-99', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Kenneth', '1512615@student.hcmus.edu.vn', '0800-659-175', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Ken', '1512238@student.hcmus.edu.vn', '0800-206-151', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Eric', '1611143@student.hcmus.edu.vn', '0800-102-845', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Raul', '1414143@student.hcmus.edu.vn', '1-855-354-11', bcrypt.hashSync('1512517', 10), 1],
+    ['Rogers', 'Casey', '1515774@student.hcmus.edu.vn', '1-866-448-60', bcrypt.hashSync('1512517', 10), 1],
+    ['Roberts', 'Christopher', '1613806@student.hcmus.edu.vn', '0800-515-673', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanders', 'Alexander', '1411756@student.hcmus.edu.vn', '1-877-943-98', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Charlotte', '1612614@student.hcmus.edu.vn', '0800-064-971', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Roberto', '1314263@student.hcmus.edu.vn', '1-844-583-89', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Gene', '1511289@student.hcmus.edu.vn', '0800-876-278', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanders', 'Rodney', '1413717@student.hcmus.edu.vn', '0800-631-257', bcrypt.hashSync('1512517', 10), 1],
+    ['Gray', 'Phillip', '1614229@student.hcmus.edu.vn', '1-844-022-27', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Emily', '1412879@student.hcmus.edu.vn', '1-855-068-89', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Darryl', '1514118@student.hcmus.edu.vn', '1-844-280-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Rodriguez', 'Leon', '1414035@student.hcmus.edu.vn', '0800-066-146', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Mario', '1611587@student.hcmus.edu.vn', '1-800-151-36', bcrypt.hashSync('1512517', 10), 1],
+    ['Fisher', 'Julia', '1313565@student.hcmus.edu.vn', '0800-427-281', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Joel', '1311853@student.hcmus.edu.vn', '0800-553-226', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Bob', '1514756@student.hcmus.edu.vn', '0800-942-257', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Brooklyn', '1614722@student.hcmus.edu.vn', '1-855-878-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Stewart', 'Jesse', '1514161@student.hcmus.edu.vn', '0800-488-899', bcrypt.hashSync('1512517', 10), 1],
+    ['Morgan', 'Emily', '1513565@student.hcmus.edu.vn', '1-877-776-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Roland', '1312851@student.hcmus.edu.vn', '0800-788-323', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Alex', '1411601@student.hcmus.edu.vn', '1-866-445-01', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Todd', '1513238@student.hcmus.edu.vn', '1-888-154-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Flores', 'Kevin', '1412756@student.hcmus.edu.vn', '0800-538-818', bcrypt.hashSync('1512517', 10), 1],
+    ['Thomas', 'Hailey', '1611851@student.hcmus.edu.vn', '0800-815-672', bcrypt.hashSync('1512517', 10), 1],
+    ['Sullivan', 'Gianna', '1315839@student.hcmus.edu.vn', '0800-934-767', bcrypt.hashSync('1512517', 10), 1],
+    ['Gutierrez', 'Allison', '1614289@student.hcmus.edu.vn', '1-888-911-58', bcrypt.hashSync('1512517', 10), 1],
+    ['Gonzalez', 'Clifton', '1511822@student.hcmus.edu.vn', '1-844-473-95', bcrypt.hashSync('1512517', 10), 1],
+    ['Lopez', 'Bobby', '1513556@student.hcmus.edu.vn', '0800-352-127', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Erik', '1412975@student.hcmus.edu.vn', '1-866-639-21', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Ben', '1312636@student.hcmus.edu.vn', '0800-771-571', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Brooklyn', '1313318@student.hcmus.edu.vn', '1-844-265-38', bcrypt.hashSync('1512517', 10), 1],
+    ['Taylor', 'Rodney', '1611750@student.hcmus.edu.vn', '0800-214-833', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Nicholas', '1615026@student.hcmus.edu.vn', '1-855-102-84', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Angel', '1314726@student.hcmus.edu.vn', '0800-030-242', bcrypt.hashSync('1512517', 10), 1],
+    ['Harris', 'Arthur', '1314140@student.hcmus.edu.vn', '1-888-718-22', bcrypt.hashSync('1512517', 10), 1],
+    ['Hill', 'Savannah', '1614668@student.hcmus.edu.vn', '1-855-232-76', bcrypt.hashSync('1512517', 10), 1],
+    ['Price', 'Franklin', '1614468@student.hcmus.edu.vn', '1-877-669-64', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Ryan', '1312614@student.hcmus.edu.vn', '0800-628-706', bcrypt.hashSync('1512517', 10), 1],
+    ['Nelson', 'Max', '1614485@student.hcmus.edu.vn', '1-855-754-53', bcrypt.hashSync('1512517', 10), 1],
+    ['Adams', 'Cory', '1312157@student.hcmus.edu.vn', '1-877-620-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Aaron', '1612822@student.hcmus.edu.vn', '1-800-115-12', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Joel', '1415158@student.hcmus.edu.vn', '0800-326-351', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Vivian', '1315587@student.hcmus.edu.vn', '0800-066-317', bcrypt.hashSync('1512517', 10), 1],
+    ['Harris', 'Christopher', '1512441@student.hcmus.edu.vn', '1-800-749-57', bcrypt.hashSync('1512517', 10), 1],
+    ['Kelly', 'Aria', '1514820@student.hcmus.edu.vn', '0800-523-155', bcrypt.hashSync('1512517', 10), 1],
+    ['Anderson', 'Salvador', '1613617@student.hcmus.edu.vn', '0800-697-752', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Olivia', '1413263@student.hcmus.edu.vn', '1-866-591-22', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Arianna', '1315263@student.hcmus.edu.vn', '1-866-605-40', bcrypt.hashSync('1512517', 10), 1],
+    ['Turner', 'Violet', '1315615@student.hcmus.edu.vn', '0800-652-563', bcrypt.hashSync('1512517', 10), 1],
+    ['Davis', 'Zoe', '1413646@student.hcmus.edu.vn', '1-855-254-29', bcrypt.hashSync('1512517', 10), 1],
+    ['Diaz', 'Arianna', '1411086@student.hcmus.edu.vn', '0800-701-955', bcrypt.hashSync('1512517', 10), 1],
+    ['Hernandez', 'Ryan', '1413535@student.hcmus.edu.vn', '1-844-160-62', bcrypt.hashSync('1512517', 10), 1],
+    ['Scott', 'Robert', '1415140@student.hcmus.edu.vn', '1-888-033-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Green', 'Hannah', '1612727@student.hcmus.edu.vn', '0800-116-832', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Michael', '1312886@student.hcmus.edu.vn', '1-844-129-64', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Dwayne', '1615109@student.hcmus.edu.vn', '1-866-429-14', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Mario', '1313294@student.hcmus.edu.vn', '0800-154-015', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Hailey', '1411630@student.hcmus.edu.vn', '1-877-048-83', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Keira', '1413534@student.hcmus.edu.vn', '1-844-460-20', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Roland', '1412822@student.hcmus.edu.vn', '1-855-647-52', bcrypt.hashSync('1512517', 10), 1],
+    ['Miller', 'Jesus', '1514267@student.hcmus.edu.vn', '1-855-821-23', bcrypt.hashSync('1512517', 10), 1],
+    ['Roberts', 'Ava', '1611467@student.hcmus.edu.vn', '0800-186-898', bcrypt.hashSync('1512517', 10), 1],
+    ['Morales', 'Brooklyn', '1515452@student.hcmus.edu.vn', '1-866-772-50', bcrypt.hashSync('1512517', 10), 1],
+    ['Campbell', 'Violet', '1513717@student.hcmus.edu.vn', '0800-564-810', bcrypt.hashSync('1512517', 10), 1],
+    ['Gonzalez', 'Jesse', '1613402@student.hcmus.edu.vn', '0800-783-684', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Aria', '1311281@student.hcmus.edu.vn', '1-844-882-42', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Casey', '1512446@student.hcmus.edu.vn', '0800-361-128', bcrypt.hashSync('1512517', 10), 1],
+    ['Walker', 'Marvin', '1314853@student.hcmus.edu.vn', '0800-607-681', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Mark', '1414756@student.hcmus.edu.vn', '0800-784-840', bcrypt.hashSync('1512517', 10), 1],
+    ['Brooks', 'Charlotte', '1413751@student.hcmus.edu.vn', '1-877-896-12', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Charlie', '1415741@student.hcmus.edu.vn', '0800-831-808', bcrypt.hashSync('1512517', 10), 1],
+    ['Hernandez', 'Curtis', '1413556@student.hcmus.edu.vn', '1-844-367-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Darryl', '1512035@student.hcmus.edu.vn', '1-877-786-04', bcrypt.hashSync('1512517', 10), 1],
+    ['Myers', 'Jesse', '1614485@student.hcmus.edu.vn', '1-844-340-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Barnes', 'Eric', '1412847@student.hcmus.edu.vn', '1-855-745-73', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Charlie', '1311485@student.hcmus.edu.vn', '0800-727-557', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Wade', '1315035@student.hcmus.edu.vn', '0800-348-138', bcrypt.hashSync('1512517', 10), 1],
+    ['Butler', 'Allan', '1414446@student.hcmus.edu.vn', '1-877-885-11', bcrypt.hashSync('1512517', 10), 1],
+    ['Smith', 'Sydney', '1514751@student.hcmus.edu.vn', '0800-691-037', bcrypt.hashSync('1512517', 10), 1],
+    ['Lewis', 'Perry', '1415851@student.hcmus.edu.vn', '0800-219-634', bcrypt.hashSync('1512517', 10), 1],
+    ['Russell', 'Jason', '1311147@student.hcmus.edu.vn', '0800-612-783', bcrypt.hashSync('1512517', 10), 1],
+    ['Martin', 'Lauren', '1615378@student.hcmus.edu.vn', '1-800-142-83', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Sam', '1311886@student.hcmus.edu.vn', '1-844-561-60', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Henry', '1611751@student.hcmus.edu.vn', '1-866-805-22', bcrypt.hashSync('1512517', 10), 1],
+    ['Campbell', 'Michael', '1513855@student.hcmus.edu.vn', '0800-973-771', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Ken', '1513467@student.hcmus.edu.vn', '1-877-332-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Walker', 'Makayla', '1611732@student.hcmus.edu.vn', '1-877-515-81', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Avery', '1612116@student.hcmus.edu.vn', '1-855-177-97', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Lillian', '1411646@student.hcmus.edu.vn', '0800-252-032', bcrypt.hashSync('1512517', 10), 1],
+    ['Smith', 'Philip', '1515343@student.hcmus.edu.vn', '0800-717-370', bcrypt.hashSync('1512517', 10), 1],
+    ['Harris', 'Mitchell', '1611988@student.hcmus.edu.vn', '1-800-381-83', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Terrance', '1511318@student.hcmus.edu.vn', '0800-550-623', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Darrell', '1514852@student.hcmus.edu.vn', '1-866-437-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Rogers', 'Darrell', '1513450@student.hcmus.edu.vn', '1-888-379-62', bcrypt.hashSync('1512517', 10), 1],
+    ['Collins', 'Mackenzie', '1612617@student.hcmus.edu.vn', '1-877-229-34', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Alex', '1311722@student.hcmus.edu.vn', '0800-980-623', bcrypt.hashSync('1512517', 10), 1],
+    ['Cooper', 'Manuel', '1611886@student.hcmus.edu.vn', '1-844-481-16', bcrypt.hashSync('1512517', 10), 1],
+    ['Bailey', 'Joseph', '1611888@student.hcmus.edu.vn', '1-844-712-25', bcrypt.hashSync('1512517', 10), 1],
+    ['Bailey', 'Christopher', '1615468@student.hcmus.edu.vn', '0800-478-631', bcrypt.hashSync('1512517', 10), 1],
+    ['Bailey', 'Raul', '1412630@student.hcmus.edu.vn', '0800-456-012', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Hailey', '1613238@student.hcmus.edu.vn', '1-877-693-82', bcrypt.hashSync('1512517', 10), 1],
+    ['Cox', 'Christopher', '1315811@student.hcmus.edu.vn', '0800-484-078', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Kaitlyn', '1615750@student.hcmus.edu.vn', '0800-113-533', bcrypt.hashSync('1512517', 10), 1],
+    ['Robinson', 'Armando', '1415109@student.hcmus.edu.vn', '0800-324-790', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Charlotte', '1615289@student.hcmus.edu.vn', '0800-553-426', bcrypt.hashSync('1512517', 10), 1],
+    ['Stewart', 'Mark', '1413140@student.hcmus.edu.vn', '1-844-290-74', bcrypt.hashSync('1512517', 10), 1],
+    ['Morales', 'Brett', '1414338@student.hcmus.edu.vn', '0800-755-600', bcrypt.hashSync('1512517', 10), 1],
+    ['Bennett', 'Jacob', '1412485@student.hcmus.edu.vn', '1-888-767-77', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Gene', '1513243@student.hcmus.edu.vn', '0800-665-181', bcrypt.hashSync('1512517', 10), 1],
+    ['Foster', 'Natalie', '1412490@student.hcmus.edu.vn', '0800-164-767', bcrypt.hashSync('1512517', 10), 1],
+    ['Gray', 'Jesse', '1415042@student.hcmus.edu.vn', '0800-384-834', bcrypt.hashSync('1512517', 10), 1],
+    ['Brown', 'Dan', '1513367@student.hcmus.edu.vn', '0800-470-594', bcrypt.hashSync('1512517', 10), 1],
+    ['Ortiz', 'Edward', '1613722@student.hcmus.edu.vn', '1-844-589-90', bcrypt.hashSync('1512517', 10), 1],
+    ['Parker', 'Marc', '1411727@student.hcmus.edu.vn', '0800-271-369', bcrypt.hashSync('1512517', 10), 1],
+    ['Rivera', 'Donald', '1512975@student.hcmus.edu.vn', '0800-287-726', bcrypt.hashSync('1512517', 10), 1],
+    ['Torres', 'Charlie', '1314161@student.hcmus.edu.vn', '1-855-468-92', bcrypt.hashSync('1512517', 10), 1],
+    ['Hughes', 'Max', '1613847@student.hcmus.edu.vn', '0800-575-178', bcrypt.hashSync('1512517', 10), 1],
+    ['Watson', 'Sam', '1512402@student.hcmus.edu.vn', '0800-227-273', bcrypt.hashSync('1512517', 10), 1],
+    ['Sullivan', 'Phillip', '1513646@student.hcmus.edu.vn', '0800-862-716', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Lance', '1614565@student.hcmus.edu.vn', '1-844-408-56', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Jose', '1414741@student.hcmus.edu.vn', '1-866-426-13', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Ian', '1614646@student.hcmus.edu.vn', '1-844-618-62', bcrypt.hashSync('1512517', 10), 1],
+    ['Young', 'Jorge', '1515267@student.hcmus.edu.vn', '0800-884-554', bcrypt.hashSync('1512517', 10), 1],
+    ['Gomez', 'Lillian', '1512727@student.hcmus.edu.vn', '0800-236-993', bcrypt.hashSync('1512517', 10), 1],
+    ['Roberts', 'Leo', '1513263@student.hcmus.edu.vn', '1-888-362-18', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Charlie', '1513617@student.hcmus.edu.vn', '1-800-254-71', bcrypt.hashSync('1512517', 10), 1],
+    ['Watson', 'Lawrence', '1511108@student.hcmus.edu.vn', '1-866-183-39', bcrypt.hashSync('1512517', 10), 1],
+    ['Nguyen', 'Dwayne', '1614118@student.hcmus.edu.vn', '1-866-382-67', bcrypt.hashSync('1512517', 10), 1],
+    ['Wright', 'Leo', '1511601@student.hcmus.edu.vn', '0800-944-613', bcrypt.hashSync('1512517', 10), 1],
+    ['Murphy', 'Benjamin', '1514243@student.hcmus.edu.vn', '0800-606-138', bcrypt.hashSync('1512517', 10), 1],
+    ['Perez', 'Olivia', '1512636@student.hcmus.edu.vn', '0800-652-823', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Clara', '1311143@student.hcmus.edu.vn', '1-866-474-78', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Javier', '1612035@student.hcmus.edu.vn', '0800-120-280', bcrypt.hashSync('1512517', 10), 1],
+    ['Hill', 'Everett', '1314858@student.hcmus.edu.vn', '0800-273-196', bcrypt.hashSync('1512517', 10), 1],
+    ['Mitchell', 'Victor', '1314727@student.hcmus.edu.vn', '0800-745-815', bcrypt.hashSync('1512517', 10), 1],
+    ['Richardson', 'Andy', '1411614@student.hcmus.edu.vn', '0800-412-721', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Christopher', '1512485@student.hcmus.edu.vn', '0800-444-517', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Natalie', '1614651@student.hcmus.edu.vn', '0800-837-563', bcrypt.hashSync('1512517', 10), 1],
+    ['Morris', 'Jaime', '1311267@student.hcmus.edu.vn', '1-877-344-14', bcrypt.hashSync('1512517', 10), 1],
+    ['Thompson', 'Sydney', '1314253@student.hcmus.edu.vn', '0800-814-221', bcrypt.hashSync('1512517', 10), 1],
+    ['King', 'Hannah', '1515587@student.hcmus.edu.vn', '1-844-252-89', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Julian', '1413238@student.hcmus.edu.vn', '0800-381-413', bcrypt.hashSync('1512517', 10), 1],
+    ['Diaz', 'Dustin', '1613367@student.hcmus.edu.vn', '0800-878-172', bcrypt.hashSync('1512517', 10), 1],
+    ['Bennett', 'Allan', '1515197@student.hcmus.edu.vn', '0800-555-775', bcrypt.hashSync('1512517', 10), 1],
+    ['Jackson', 'Gabriel', '1312646@student.hcmus.edu.vn', '0800-179-561', bcrypt.hashSync('1512517', 10), 1],
+    ['Carter', 'Sydney', '1414726@student.hcmus.edu.vn', '1-800-586-63', bcrypt.hashSync('1512517', 10), 1],
+    ['Long', 'Robert', '1612229@student.hcmus.edu.vn', '0800-443-517', bcrypt.hashSync('1512517', 10), 1],
+    ['Ramirez', 'Scarlett', '1315221@student.hcmus.edu.vn', '0800-927-617', bcrypt.hashSync('1512517', 10), 1],
+    ['Reyes', 'Antonio', '1513318@student.hcmus.edu.vn', '0800-233-228', bcrypt.hashSync('1512517', 10), 1],
+    ['Parker', 'Marvin', '1312143@student.hcmus.edu.vn', '0800-486-104', bcrypt.hashSync('1512517', 10), 1],
+    ['Howard', 'Mitchell', '1414955@student.hcmus.edu.vn', '1-866-338-27', bcrypt.hashSync('1512517', 10), 1],
+    ['Carter', 'Ramon', '1313143@student.hcmus.edu.vn', '0800-299-669', bcrypt.hashSync('1512517', 10), 1],
+    ['Jones', 'Francisco', '1613441@student.hcmus.edu.vn', '0800-365-070', bcrypt.hashSync('1512517', 10), 1],
+    ['Sullivan', 'Everett', '1313615@student.hcmus.edu.vn', '0800-381-186', bcrypt.hashSync('1512517', 10), 1],
+    ['Sanchez', 'Donald', '1311441@student.hcmus.edu.vn', '1-855-184-51', bcrypt.hashSync('1512517', 10), 1],
+    ['Clark', 'Ben', '1315490@student.hcmus.edu.vn', '1-800-281-26', bcrypt.hashSync('1512517', 10), 1],
+    ['Ross', 'Claire', '1513726@student.hcmus.edu.vn', '1-877-052-63', bcrypt.hashSync('1512517', 10), 1],
+    ['Wilson', 'Edward', '1311617@student.hcmus.edu.vn', '1-888-203-85', bcrypt.hashSync('1512517', 10), 1],
+    ['Cruz', 'Curtis', '1414822@student.hcmus.edu.vn', '1-855-980-31', bcrypt.hashSync('1512517', 10), 1],
+    ['Johnson', 'Darryl', '1411467@student.hcmus.edu.vn', '0800-315-827', bcrypt.hashSync('1512517', 10), 1],
+    ['Hall', 'Bruce', '1413446@student.hcmus.edu.vn', '1-855-940-86', bcrypt.hashSync('1512517', 10), 1],
+    ['Phillips', 'Phillip', '1611294@student.hcmus.edu.vn', '1-844-282-71', bcrypt.hashSync('1512517', 10), 1],
+    ['Reed', 'Javier', '1312727@student.hcmus.edu.vn', '0800-649-824', bcrypt.hashSync('1512517', 10), 1],
+    ['Jenkins', 'Jaime', '1514822@student.hcmus.edu.vn', '0800-561-442', bcrypt.hashSync('1512517', 10), 1],
+    ['Bell', 'Joseph', '1613026@student.hcmus.edu.vn', '0800-814-767', bcrypt.hashSync('1512517', 10), 1],
+    ['Smith', 'Phillip', '1312754@student.hcmus.edu.vn', '0800-646-823', bcrypt.hashSync('1512517', 10), 1],
 ];
 
 var seeding_postgres = function (res) {
@@ -516,7 +629,7 @@ var seeding_postgres = function (res) {
                 });
             },
             function (callback) {
-                connection.query(format('INSERT INTO roles (name) VALUES %L', insert_roles), function (error, results, fields) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users1), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -525,115 +638,7 @@ var seeding_postgres = function (res) {
                 });
             },
             function (callback) {
-                connection.query(format('INSERT INTO semesters (name,start_date,end_date,vacation_time) VALUES %L', insert_semesters), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO programs (name,code) VALUES %L', insert_programs), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO classes (name,email,program_id) VALUES %L', insert_classes), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO courses (code,name,semester_id,program_id,office_hour,note) VALUES %L', insert_courses), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO class_has_course (class_id,course_id,schedules) VALUES %L', insert_class_has_course), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO teacher_teach_course (teacher_id,course_id,teacher_role) VALUES %L', insert_teacher_teach_course), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO absence_requests (student_id, reason, start_date, end_date) VALUES %L', insert_absence_requests), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO feedbacks (from_id, to_id, title, content, category, type, read, replied) VALUES %L', insert_feeback), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO quiz (title, class_has_course_id, created_by, is_template) VALUES %L', insert_quiz), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO quiz_questions (quiz_id, text, option_a, option_b, option_c, option_d, correct_option, timer) VALUES %L', insert_quiz_question), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO quiz_answers (quiz_question_id, selected_option ,answered_by) VALUES %L', insert_quiz_answer), function (error, results, fields) {
-                    if (error) {
-                        callback(error);
-                    } else {
-                        callback();
-                    }
-                });
-            },
-            function (callback) {
-                connection.query(format('INSERT INTO notifications (to_id,from_id, message ,object_id, type) VALUES %L', insert_notifications), function (error, results, fields) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L', insert_users2), function (error, results, fields) {
                     if (error) {
                         callback(error);
                     } else {
@@ -665,6 +670,13 @@ var seeding_postgres = function (res) {
     });
 };
 
+//[name]
+var insert_roles = [
+    ['Student'],
+    ['Teacher'],
+    ['Staff'],
+    ['Admin']
+];
 var insert_admin = [
     ['Park Hang', 'Seo', 'parkhangseo@fit.hcmus.edu.vn', '01228718705', bcrypt.hashSync('korea', 10), 4], //1
 ];
