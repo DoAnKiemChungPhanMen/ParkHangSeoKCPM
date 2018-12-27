@@ -156,6 +156,7 @@ router.post('/add', function(req, res, next) {
                     new_last_name,
                     new_email,
                     new_phone,
+                    bcrypt.hashSync(new_password, 10),
                     _global.role.student
                 ]];
                 var new_student = [];
@@ -169,7 +170,7 @@ router.post('/add', function(req, res, next) {
                     },
                     //add data to user table
                     function(callback) {
-                        connection.query(format('INSERT INTO users (first_name,last_name,email,phone,role_id) VALUES %L RETURNING id', new_user), function(error, result, fields) {
+                        connection.query(format('INSERT INTO users (first_name,last_name,email,phone,password,role_id) VALUES %L RETURNING id', new_user), function(error, result, fields) {
                             if (error) {
                                 callback(error);
                             }else{

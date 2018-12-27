@@ -218,11 +218,12 @@ router.post('/add-staff', function(req, res, next) {
                     new_first_name,
                     new_last_name,
                     new_email,
+                    bcrypt.hashSync(new_password, 10),
                     new_phone,
                     _global.role.staff
                 ]];
                 
-                connection.query(format('INSERT INTO users (first_name,last_name,email,phone,role_id) VALUES %L RETURNING id', new_user), function(error, result, fields) {
+                connection.query(format('INSERT INTO users (first_name,last_name,email,password,phone,role_id) VALUES %L RETURNING id', new_user), function(error, result, fields) {
                     if (error) {
                         _global.sendError(res, "Email already existed");
                         done();
