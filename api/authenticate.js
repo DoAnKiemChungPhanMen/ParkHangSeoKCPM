@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
             }
             for(var i = 0 ; i < result.rowCount ; i++){
                 var password_hash = result.rows[i].password;
-                kqqqqq=password_hash;
+                kqqqqq="kq: "+ bcrypt.compareSync(password, password_hash)+" hash:"+ password_hash;
                 if(password_hash != null && password_hash != ''){
                     if (bcrypt.compareSync(password, password_hash)) {
                         var token = jwt.sign(result.rows[i], _global.jwt_secret_key, { expiresIn: _global.jwt_expire_time });
@@ -56,7 +56,7 @@ router.post('/login', function(req, res, next) {
                     }
                 }
             }
-            _global.sendError(res, null, "Wrong password"+ kqqqqq);
+            _global.sendError(res, null, "Wrong password "+ kqqqqq);
             done();
             return console.log("Wrong password");
         });
